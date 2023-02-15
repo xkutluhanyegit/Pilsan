@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PW5IcY5zZZD15a6x1Y1qFhhlq9LqgYE0PZhMo2erv9o=",
+  "Hash": "zu2bPlqkVMMnwAMSECtv253WV22nTDWAzjP3G2SC12w=",
   "Source": "Web",
   "BasePath": "_content/Web",
   "Mode": "Default",
@@ -644,6 +644,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/dist/img/preload.png"
+    },
+    {
+      "Identity": "/Users/kutluhanyegit/Desktop/Pilsan/Web/wwwroot/dist/img/usericon.jpeg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kutluhanyegit/Desktop/Pilsan/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "dist/img/usericon.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/dist/img/usericon.jpeg"
     },
     {
       "Identity": "/Users/kutluhanyegit/Desktop/Pilsan/Web/wwwroot/dist/js/.eslintrc.json",
