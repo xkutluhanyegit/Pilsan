@@ -16313,6 +16313,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Login/index.cshtml",
+      "TargetPath": "Views\\Login\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Shared/_LoginLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_LoginLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
