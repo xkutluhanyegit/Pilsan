@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -18,8 +19,17 @@ namespace Web.Controllers
             _logger = logger;
         }
 
+        
         public IActionResult Index()
         {
+            return View();
+        }
+
+        
+        [HttpGet]
+        public IActionResult Index(LoginViewModel loginvm)
+        {
+            
             return View();
         }
 

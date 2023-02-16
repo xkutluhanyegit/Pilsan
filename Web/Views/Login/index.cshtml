@@ -3,18 +3,20 @@
     Layout = "_LoginLayout";
 }
 
+@model Web.Models.LoginViewModel
+
 <div class="login-box">
-  <div class="login-logo">
+  @* <div class="login-logo">
     <a asp-controller="home" asp-action="index" ><img class="img-fluid" style="max-width: 200px;" src="/dist/img/logo.png"></a>
-  </div>
+  </div> *@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Oturum açmak için giriş yapın!..</p>
 
-      <form action="../../index3.html" method="post">
+      <form asp-controller="login" asp-action="index" method="Post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Kullanıcı adı">
+          <input asp-for="@Model.username" type="text" class="form-control" placeholder="Kullanıcı adı">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -22,7 +24,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Şifre">
+          <input asp-for="@Model.password" type="password" class="form-control" placeholder="Şifre">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -40,7 +42,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Giriş</button>
+            <button type="submit" class="btn">Giriş</button>
           </div>
           <!-- /.col -->
         </div>
