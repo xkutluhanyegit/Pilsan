@@ -1,0 +1,4 @@
+{
+    "razor.languageServer.debug": true,
+    "html.format.templating": true
+}

@@ -15,6 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        List<LoginViewModel> get = new List<LoginViewModel>();
         return View();
     }
 
