@@ -1,20 +1,21 @@
 @{
-    ViewData["Title"] = "Kullanıcı Giriş";
-    Layout = "_LoginLayout";
+ViewData["Title"] = "Kullanıcı Giriş";
+Layout = "_LoginLayout";
 }
 
 @model Web.Models.LoginViewModel
 
 <div class="login-box">
   <div class="login-logo">
-    <a asp-controller="home" asp-action="index" ><img class="img-fluid" style="max-width: 200px;" src="/dist/img/logo.png"></a>
+    <a asp-controller="home" asp-action="index"><img class="img-fluid" style="max-width: 200px;"
+        src="/dist/img/logo.png"></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Oturum açmak için giriş yapın!..</p>
 
-  
+
       <form asp-controller="login" asp-action="index" method="Post">
         <div class="input-group mb-3">
           <input asp-for="@Model.username" type="text" class="form-control" placeholder="Kullanıcı adı">
@@ -43,7 +44,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn">Giriş</button>
+            <button type="submit" class="btn btn-primary btn-block">Giriş</button>
           </div>
           <!-- /.col -->
         </div>
@@ -52,4 +53,3 @@
     <!-- /.login-card-body -->
   </div>
 </div>
-
