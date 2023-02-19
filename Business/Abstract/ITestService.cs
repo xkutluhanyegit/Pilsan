@@ -12,6 +12,7 @@ namespace Business.Abstract
     {
         IResult Add(Test test);
         IDataResult<TestDetailDto> GetTestDetailDto();
+        IDataResult<List<Test>> GetAll();
 
     }
 }

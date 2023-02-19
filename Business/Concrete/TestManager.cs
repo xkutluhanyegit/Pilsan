@@ -25,6 +25,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.AddedMessage);
         }
 
+        public IDataResult<List<Test>> GetAll()
+        {
+            var res = _testDal.GetAll();
+            return new SuccessDataResult<List<Test>>(res);
+        }
+
         public IDataResult<TestDetailDto> GetTestDetailDto()
         {
             throw new NotImplementedException();
