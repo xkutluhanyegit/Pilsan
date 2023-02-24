@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Kullanıcı Listesi";
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Kullanıcı Listesi</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Kullanıcı Ad</th>
+                    <th>Kullanıcı Bölüm</th>
+                    <th>Kullanıcı Rol</th>
+                    <th>Detay</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Kutluhanyegit</td>
+                    <td>Enjeksiyon</td>
+                    <td>Enjeksiyon</td>
+                    <td>Detay</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>gökhantinmaz</td>
+                    <td>Üretim</td>
+                    <td>Üretim</td>
+                    <td>Detay</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>Kullanıcı Ad</th>
+                    <th>Kullanıcı Bölüm</th>
+                    <th>Kullanıcı Rol</th>
+                    <th>Detay</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+<a asp-controller="appuser" asp-action="add" id="add-btn" class="btn btn-success rounded-circle"><i
+        class="fa-solid fa-plus"></i></a>

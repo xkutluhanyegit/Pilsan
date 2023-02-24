@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WNrx3V8HXEoo8553G/9zGOvgGAjVZwl5StQoThXJX9o=",
+  "Hash": "76fTHajy19gDcbi2ZMKU1fk2J52E71/ZpsGi4Tp27Dw=",
   "Source": "Web",
   "BasePath": "_content/Web",
   "Mode": "Default",
@@ -32,6 +32,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/.DS_Store"
+    },
+    {
+      "Identity": "/Users/kutluhanyegit/Desktop/Pilsan/Web/wwwroot/css/main.css",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kutluhanyegit/Desktop/Pilsan/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "css/main.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/main.css"
     },
     {
       "Identity": "/Users/kutluhanyegit/Desktop/Pilsan/Web/wwwroot/dist/.DS_Store",

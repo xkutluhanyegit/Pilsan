@@ -1,4 +1,5 @@
 /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/bin/Debug/net6.0/DataAccess.deps.json
+/Users/kutluhanyegit/Desktop/Pilsan/DataAccess/bin/Debug/net6.0/DataAccess.runtimeconfig.json
 /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/bin/Debug/net6.0/DataAccess.dll
 /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/bin/Debug/net6.0/DataAccess.pdb
 /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/bin/Debug/net6.0/Core.dll
@@ -14,4 +15,5 @@
 /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/obj/Debug/net6.0/DataAccess.dll
 /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/obj/Debug/net6.0/refint/DataAccess.dll
 /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/obj/Debug/net6.0/DataAccess.pdb
+/Users/kutluhanyegit/Desktop/Pilsan/DataAccess/obj/Debug/net6.0/DataAccess.genruntimeconfig.cache
 /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/obj/Debug/net6.0/ref/DataAccess.dll

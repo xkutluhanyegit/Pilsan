@@ -1,0 +1,9 @@
+#save-btn {
+    width: 150px;
+}
+
+#add-btn {
+    position: fixed;
+    bottom: 75px;
+    right: 25px;
+}
