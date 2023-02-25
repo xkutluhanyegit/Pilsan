@@ -10,5 +10,6 @@ namespace Business.Abstract
     public interface IAppUserService
     {
         IResult Add(AppUser appUser);
+        IDataResult<List<AppUser>> GetAll();
     }
 }

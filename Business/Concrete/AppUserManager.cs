@@ -24,5 +24,11 @@ namespace Business.Concrete
             _appUserDal.Add(appUser);
             return new SuccessResult(Message.AddedSuccess);
         }
+
+        public IDataResult<List<AppUser>> GetAll()
+        {
+            var res = _appUserDal.GetAll();
+            return new SuccessDataResult<List<AppUser>>(res, Message.AddedSuccess);
+        }
     }
 }

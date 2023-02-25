@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constant.Messages;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 
 namespace Business.Concrete
 {
@@ -20,8 +22,21 @@ namespace Business.Concrete
         }
         public IResult Add(AppRole appRole)
         {
-            _appRoleDal.Add(appRole);
-            return new SuccessResult(Message.AddedSuccess);
+            var validContext = new ValidationContext<AppRole>(appRole);
+            RolValidator rolValidator = new RolValidator();
+            var validRes = rolValidator.Validate(appRole);
+
+            if (validRes.IsValid)
+            {
+                _appRoleDal.Add(appRole);
+                return new SuccessResult(Message.AddedSuccess);
+            }
+            else
+            {
+                return new ErrorResult(validRes.Errors.ToString());
+            }
+
+
         }
 
         public IDataResult<List<AppRole>> GetAll()

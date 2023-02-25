@@ -68,3 +68,4 @@
 /Users/kutluhanyegit/Desktop/Pilsan/Web/bin/Debug/net6.0/Autofac.Extensions.DependencyInjection.dll
 /Users/kutluhanyegit/Desktop/Pilsan/Web/bin/Debug/net6.0/Autofac.Extras.DynamicProxy.dll
 /Users/kutluhanyegit/Desktop/Pilsan/Web/bin/Debug/net6.0/Castle.Core.dll
+/Users/kutluhanyegit/Desktop/Pilsan/Web/bin/Debug/net6.0/FluentValidation.dll

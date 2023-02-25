@@ -18,6 +18,9 @@ namespace Business.DependencyResolvers.Autofac
             //No Data
             builder.RegisterType<AppRoleManager>().As<IAppRoleService>().SingleInstance();
             builder.RegisterType<EfAppRoleDal>().As<IAppRoleDal>().SingleInstance();
+
+            builder.RegisterType<AppUserManager>().As<IAppUserService>().SingleInstance();
+            builder.RegisterType<EfAppUserDal>().As<IAppUserDal>().SingleInstance();
         }
     }
 }

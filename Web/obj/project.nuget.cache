@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AwU2fhpc9NpFe/eC4pTQIKV2EmThwWuoyyO/k0pFGkacxsuhNjaD3j2YUQJWk2jXQXgTYsrPQh4YiFGW5y2YLA==",
+  "dgSpecHash": "AqwPPeesqWnhAeWe9lfkRAVFEt+jZAuSmzt0RN2DeQx6saEZ4mLKN+xi5h8AH8yQRiDYB21qjPmum8LEc+xMsg==",
   "success": true,
   "projectFilePath": "/Users/kutluhanyegit/Desktop/Pilsan/Web/Web.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "/Users/kutluhanyegit/.nuget/packages/autofac.extensions.dependencyinjection/8.0.0/autofac.extensions.dependencyinjection.8.0.0.nupkg.sha512",
     "/Users/kutluhanyegit/.nuget/packages/autofac.extras.dynamicproxy/6.0.1/autofac.extras.dynamicproxy.6.0.1.nupkg.sha512",
     "/Users/kutluhanyegit/.nuget/packages/castle.core/4.4.0/castle.core.4.4.0.nupkg.sha512",
+    "/Users/kutluhanyegit/.nuget/packages/fluentvalidation/11.5.1/fluentvalidation.11.5.1.nupkg.sha512",
     "/Users/kutluhanyegit/.nuget/packages/microsoft.data.sqlite.core/6.0.14/microsoft.data.sqlite.core.6.0.14.nupkg.sha512",
     "/Users/kutluhanyegit/.nuget/packages/microsoft.entityframeworkcore/6.0.14/microsoft.entityframeworkcore.6.0.14.nupkg.sha512",
     "/Users/kutluhanyegit/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.14/microsoft.entityframeworkcore.abstractions.6.0.14.nupkg.sha512",

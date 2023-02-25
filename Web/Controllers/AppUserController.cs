@@ -7,6 +7,7 @@ using Business.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -14,17 +15,24 @@ namespace Web.Controllers
     public class AppUserController : Controller
     {
         IAppUserService _appUserService;
+        IAppRoleService _appRoleService;
         private readonly ILogger<AppUserController> _logger;
 
-        public AppUserController(ILogger<AppUserController> logger, IAppUserService appUserService)
+        public AppUserController(ILogger<AppUserController> logger, IAppUserService appUserService, IAppRoleService appRoleService)
         {
             _logger = logger;
             _appUserService = appUserService;
+            _appRoleService = appRoleService;
         }
 
         [HttpGet("")]
         public IActionResult Index()
         {
+            var res = _appUserService.GetAll();
+            if (res.Success)
+            {
+                return View(res.Data);
+            }
             return View();
         }
 
@@ -32,7 +40,6 @@ namespace Web.Controllers
         [Route("ekle")]
         public IActionResult Add()
         {
-            //TODO: Implement Realistic Implementation
             return View();
         }
 

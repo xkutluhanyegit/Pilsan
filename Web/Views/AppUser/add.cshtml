@@ -1,4 +1,4 @@
-@model Entities.Concrete.AppUser;
+@model Web.Models.AppUserVM;
 
 @{
     ViewData["Title"] = "Kullanıcı Kayıt";
@@ -21,14 +21,15 @@
             </div>
             <div class="form-group">
                 <label>Rol</label>
-                <select class="form-control">
-                    <option selected>---Rol Seçin---</option>
-                    <option>Admin</option>
-                    <option>IK</option>
-                    <option>Şişirme</option>
-                    <option>Enjeksiyon</option>
-                    <option>Montaj</option>
+                <select name="" id="">
+                    <option selected value="0">---Rol Seçin---</option>
+                    @foreach (var item in Model.roles)
+                    {
+                        <option value="@item.RolID">@item.RolName</option>
+                    }
                 </select>
+
+
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Şifre</label>
