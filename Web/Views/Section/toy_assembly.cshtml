@@ -1,0 +1,51 @@
+@model IEnumerable<Entities.DTOs.PersonelInfoDto>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Oyuncak Montaj";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 style="font-weight: bold;" class="card-title float-left">Oyuncak Montaj Bölümü Personel Listesi </h3>
+        <a href="" class="btn btn-success float-right"><i class="fa-regular fa-file-lines"></i> Vardiya Oluştur</a>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Personel Ad Soyad</th>
+                    <th>Departman</th>
+                    <th>İmza</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    int count = 1;
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Name @item.Surname</td>
+                            <td>@item.DepartmanName</td>
+                            <td></td>
+                        </tr>
+                        count++;
+                    }
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>Personel Ad Soyad</th>
+                    <th>Departman</th>
+                    <th>İmza</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

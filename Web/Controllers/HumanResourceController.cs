@@ -1,3 +1,4 @@
+using Business.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
@@ -7,16 +8,30 @@ namespace Web.Controllers
     public class HumanResourceController : Controller
     {
         private readonly ILogger<HumanResourceController> _logger;
+        IPersonelService _personelService;
 
-        
-        public HumanResourceController(ILogger<HumanResourceController> logger)
+
+        public HumanResourceController(ILogger<HumanResourceController> logger, IPersonelService personelService)
         {
             _logger = logger;
+            _personelService = personelService;
         }
 
         [Route("")]
         public IActionResult Index()
         {
+            // var res = _personelService.GetByActiveWorkers();
+            // if (res.Success)
+            // {
+            //     ViewBag.Data = res.Data.Count;
+            //     return View(res.Data);
+            // }
+            var res = _personelService.GetPersonelInfoDto();
+            if (res.Success)
+            {
+                ViewBag.Data = res.Data.Count;
+                return View(res.Data);
+            }
             return View();
         }
 

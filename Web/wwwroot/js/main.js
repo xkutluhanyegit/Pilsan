@@ -6,12 +6,14 @@ $(function () {
 
 });
 
-$(document).ready(function () {
-  $("#toggleBtn").click(function () {
-    if ($(window).width() <= 991) {
+$(function () {
+  $("#example1-shift").DataTable({
+    "responsive": true, "lengthChange": false, "autoWidth": false, "paging": false, "scrollY": "500px",
+    "scrollCollapse": true,
+    "paging": false,
+    "buttons": []
+  }).buttons().container().appendTo('#example1-shift_wrapper .col-md-6:eq(0)');
 
-    }
-
-  });
 });
+
 

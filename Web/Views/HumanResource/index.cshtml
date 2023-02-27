@@ -1,3 +1,4 @@
+@model IEnumerable<Entities.DTOs.PersonelInfoDto>;
 @{
   ViewData["Title"] = "İnsan Kaynakları";
 }
@@ -6,12 +7,12 @@
 <div class="row">
   <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box">
-      <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-turkish-lira-sign"></i></span>
+      <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-industry"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">Mesai</span>
+        <span class="info-box-text">Toplam Çalışan Sayısı</span>
         <span class="info-box-number">
-          1000,00
+          @ViewBag.Data
           <small></small>
         </span>
       </div>
@@ -76,187 +77,42 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Personel Ad</th>
-          <th>Personal Soyad</th>
+          <th>Sicil No</th>
           <th>Departman</th>
-          <th>Görev</th>
+          <th>Personel Ad Soyad</th>
+          <th>Bölge</th>
+          <th>Durak</th>
           <th>Detay</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Plastik</td>
-          <td>Enjeksiyon</td>
-          <td>></td>
-        </tr>
 
-        <tr>
-          <td>2</td>
-          <td>Gökhan</td>
-          <td>Tınmaz</td>
-          <td>Plastik</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-
-        <tr>
-          <td>3</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Şişirme</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-
-        <tr>
-          <td>4</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-
-        <tr>
-          <td>5</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Enjeksiyon</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>11</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Şişirme</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>12</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>13</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Şişirme</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>14</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>15</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>16</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Şişirme</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>17</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>18</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>19</td>
-          <td>Deneme Ad</td>
-          <td>Deneme Soyad</td>
-          <td>Üretim</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
-        <tr>
-          <td>20</td>
-          <td>Kutluhan</td>
-          <td>Yeğit</td>
-          <td>Enjeksiyon</td>
-          <td>Çalışan</td>
-          <td>></td>
-        </tr>
+        @{
+          int count = 1;
+          @foreach (var item in Model)
+          {
+            <tr>
+              <td>@count</td>
+              <td>@item.SicilNo</td>
+              <td>@item.DepartmanName</td>
+              <td>@item.Name @item.Surname</td>
+              <td>@item.Shuttle</td>
+              <td>@item.Station</td>
+              <td>Detay</td>
+            </tr>
+            count++;
+          }
+        }
 
       </tbody>
       <tfoot>
         <tr>
           <th>#</th>
-          <th>Personel Ad</th>
-          <th>Personal Soyad</th>
+          <th>Sicil No</th>
           <th>Departman</th>
-          <th>Görev</th>
+          <th>Personel Ad Soyad</th>
+          <th>Bölge</th>
+          <th>Durak</th>
           <th>Detay</th>
         </tr>
       </tfoot>

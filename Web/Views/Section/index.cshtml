@@ -1,0 +1,140 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Bölümler";
+}
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="battery_installation" class="text-dark">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-car-battery"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Akülü Montaj</span>
+                    <span class="info-box-number">@ViewBag.battery_installation</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="injection" class="text-dark">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fa-solid fa-fill-drip"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Enjeksiyon</span>
+                    <span class="info-box-number">@ViewBag.injection</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+    <!-- /.col -->
+
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="molding_room" class="text-dark">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fa-solid fa-layer-group"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Kalıphane</span>
+                    <span class="info-box-number">@ViewBag.molding_room</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="toy_assembly" class="text-dark">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fa-solid fa-puzzle-piece"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Oyuncak Montaj</span>
+                    <span class="info-box-number">@ViewBag.toy_assembly</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+    <!-- /.col -->
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="puffing" class="text-dark">
+            <div class="info-box">
+                <span class="info-box-icon bg-primary elevation-1"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Şişirme</span>
+                    <span class="info-box-number">@ViewBag.puffing</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="warehouse" class="text-dark">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-dark elevation-1"><i class="fa-solid fa-warehouse"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Sevkiyat Depo</span>
+                    <span class="info-box-number">@ViewBag.warehouse</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+    <!-- /.col -->
+
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3 disable">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-light elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">...</span>
+                <span class="info-box-number">..</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3 disable">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-light elevation-1"><i class="fas fa-users"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">...</span>
+                <span class="info-box-number">..</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>

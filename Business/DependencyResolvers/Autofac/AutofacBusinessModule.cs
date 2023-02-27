@@ -25,6 +25,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AppUserManager>().As<IAppUserService>().SingleInstance();
             builder.RegisterType<EfAppUserDal>().As<IAppUserDal>().SingleInstance();
 
+            builder.RegisterType<PersonelManager>().As<IPersonelService>().SingleInstance();
+            builder.RegisterType<EfPersonelDal>().As<IPersonelDal>().SingleInstance();
+
             //Autofac interceptors
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

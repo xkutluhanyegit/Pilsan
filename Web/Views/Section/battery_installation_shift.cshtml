@@ -1,0 +1,62 @@
+@model IEnumerable<Entities.DTOs.PersonelInfoDto>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Akülü Montaj Vardiya";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 style="font-weight: bold;" class="card-title float-left">Akülü Montaj Bölümü Vardiya Listesi </h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="col-md-6 border-right float-left">
+            <table id="example1-shift" class="table table-sm table-bordered ">
+                <thead>
+                    <tr>
+                        <th>Check</th>
+                        <th>Personel Ad Soyad</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    </div>
+                                </td>
+                                <td>@item.Name @item.Surname</td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Check</th>
+                        <th>Personel Ad Soyad</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="col-md-6 border-left float-left">
+            <div class="btn-group btn-group-toggle col" data-toggle="buttons">
+                <label class="btn btn-light active col-4 float-left btn-sm">
+                    <input type="radio" name="options" id="option1" autocomplete="off" checked> 08:00 - 16:00
+                </label>
+                <label class="btn btn-light col-4 float-left btn-sm">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> 16:00 - 24:00
+                </label>
+                <label class="btn btn-light col-4 float-left btn-sm">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> 00:00 - 08:00
+                </label>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+</div>
