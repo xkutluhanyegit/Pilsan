@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constant.Messages;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -20,21 +22,26 @@ namespace Business.Concrete
         {
             _appRoleDal = appRoleDal;
         }
+
+        // [ValidationAspect(typeof(RolValidator), Priority = 1)]
         public IResult Add(AppRole appRole)
         {
-            var validContext = new ValidationContext<AppRole>(appRole);
-            RolValidator rolValidator = new RolValidator();
-            var validRes = rolValidator.Validate(appRole);
+            // var validContext = new ValidationContext<AppRole>(appRole);
+            // RolValidator rolValidator = new RolValidator();
+            // var validRes = rolValidator.Validate(appRole);
 
-            if (validRes.IsValid)
-            {
-                _appRoleDal.Add(appRole);
-                return new SuccessResult(Message.AddedSuccess);
-            }
-            else
-            {
-                return new ErrorResult(validRes.Errors.ToString());
-            }
+            // if (validRes.IsValid)
+            // {
+            //     _appRoleDal.Add(appRole);
+            //     return new SuccessResult(Message.AddedSuccess);
+            // }
+            // else
+            // {
+            //     return new ErrorResult(validRes.Errors.ToString());
+            // }
+
+            _appRoleDal.Add(appRole);
+            return new SuccessResult(Message.AddedSuccess);
 
 
         }

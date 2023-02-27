@@ -4,7 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns.Validation.FluentValidation;
 using Entities.Concrete;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -44,6 +48,8 @@ namespace Web.Controllers
 
         [HttpPost("ekle")]
         [Route("ekle")]
+        //Only Api for Valide Aspect
+        // [ValidationAspect(typeof(RolValidator), Priority = 1)]
         public IActionResult add(AppRole appRole)
         {
             var result = _appRoleService.Add(appRole);
