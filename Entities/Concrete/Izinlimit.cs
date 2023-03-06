@@ -23,5 +23,6 @@ namespace Entities.Concrete
         public bool? IzinGiris { get; set; }
         public bool? GunlukPuantaj { get; set; }
         public bool? AylikPuantaj { get; set; }
+        public double? AylikLimitSure { get; set; }
     }
 }

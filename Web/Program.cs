@@ -1,10 +1,16 @@
+using System.Text;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
 using Business.DependencyResolvers.Autofac;
+using Core.Utilities.Security.Encryption;
+using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +25,48 @@ builder.Services.AddControllersWithViews();
 
 // builder.Services.AddSingleton<IAppRoleService, AppRoleManager>();
 // builder.Services.AddSingleton<IAppRoleDal, EfAppRoleDal>();
+
+
+// var tokenOptions = builder.Services.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+
+// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//     .AddJwtBearer(options =>
+//     {
+
+//         options.TokenValidationParameters = new TokenValidationParameters
+//         {
+//             ValidateIssuer = true,
+//             ValidateAudience = true,
+//             ValidateLifetime = true,
+//             ValidIssuer = tokenOptions.Issuer,
+//             ValidAudience = tokenOptions.Audience,
+//             ValidateIssuerSigningKey = true,
+//             IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+//         };
+//     });
+
+// builder.Services.AddAuthentication(options =>
+// {
+//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+// }).AddJwtBearer(o =>
+// {
+//     o.TokenValidationParameters = new TokenValidationParameters
+//     {
+//         ValidIssuer = builder.Configuration["TokenOption:Issuer"],
+//         ValidAudience = builder.Configuration["TokenOption:Audience"],
+//         IssuerSigningKey = new SymmetricSecurityKey
+//         (Encoding.UTF8.GetBytes(builder.Configuration["TokenOption:Key"])),
+//         ValidateIssuer = true,
+//         ValidateAudience = true,
+//         ValidateLifetime = false,
+//         ValidateIssuerSigningKey = true
+//     };
+// });
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
     .ConfigureContainer<ContainerBuilder>(builder =>
@@ -40,8 +88,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
+
+
 
 app.MapControllerRoute(
     name: "default",

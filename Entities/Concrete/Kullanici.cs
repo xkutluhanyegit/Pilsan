@@ -38,5 +38,6 @@ namespace Entities.Concrete
         public string? DomainUsername { get; set; }
         public bool? HaftaTatiliOnay { get; set; }
         public bool? OfflineCalisma { get; set; }
+        public bool? HareketGecmisislem { get; set; }
     }
 }

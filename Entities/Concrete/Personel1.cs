@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Core.Entities;
 
-
 namespace Entities.Concrete
 {
     public partial class Personel1 : IEntity
@@ -75,5 +74,7 @@ namespace Entities.Concrete
         public string? Altdepart4 { get; set; }
         public DateTime? Altdeptar4 { get; set; }
         public string? PiIdnoYdk { get; set; }
+        public int? Shiftid { get; set; }
+        public int? Weekofyear { get; set; }
     }
 }

@@ -1,22 +1,83 @@
-@model IEnumerable<Entities.DTOs.PersonelInfoDto>
+@model IEnumerable<Entities.DTOs.PersonelDetailDto>
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Şişirme";
 }
 
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-clock"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-number">08:00 - 16:00</span>
+                <span class="info-box-text">10</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-danger elevation-1"><i class="fa-solid fa-clock"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-number">16:00 - 24:00</span>
+                <span class="info-box-text">10</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+
+    <!-- fix for small devices only -->
+    <div class="clearfix hidden-md-up"></div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fa-solid fa-clock"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-number">00:00 - 08:00</span>
+                <span class="info-box-text">10</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fa-solid fa-hourglass-start"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-number">Fazla Mesai</span>
+                <span class="info-box-text">10</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+</div>
+
 <div class="card">
     <div class="card-header">
         <h3 style="font-weight: bold;" class="card-title float-left">Şişirme Bölümü Personel Listesi </h3>
-        <a href="" class="btn btn-success float-right"><i class="fa-regular fa-file-lines"></i> Vardiya Oluştur</a>
+        <a asp-controller="section" asp-action="battery_installation_shift" class="btn btn-success float-right"><i
+                class="fa-regular fa-file-lines"></i> Vardiya Oluştur</a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="example1" class="table table-bordered table-striped table-sm">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th style="max-width: 30px;">#</th>
                     <th>Personel Ad Soyad</th>
                     <th>Departman</th>
+                    <th>Vardiya</th>
                     <th>İmza</th>
                 </tr>
             </thead>
@@ -27,9 +88,10 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@count</td>
+                            <td style="max-width: 30px;">@count</td>
                             <td>@item.Name @item.Surname</td>
                             <td>@item.DepartmanName</td>
+                            <td>@item.ShiftName</td>
                             <td></td>
                         </tr>
                         count++;
@@ -39,9 +101,10 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>#</th>
+                    <th style="max-width: 30px;">#</th>
                     <th>Personel Ad Soyad</th>
                     <th>Departman</th>
+                    <th>Vardiya</th>
                     <th>İmza</th>
                 </tr>
             </tfoot>

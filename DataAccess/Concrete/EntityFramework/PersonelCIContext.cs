@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Entities.Concrete;
+
 namespace DataAccess.Concrete.EntityFramework
 {
     public partial class PersonelCIContext : DbContext
@@ -35,6 +36,7 @@ namespace DataAccess.Concrete.EntityFramework
         public virtual DbSet<Bordrotanim> Bordrotanims { get; set; } = null!;
         public virtual DbSet<Calisdgl> Calisdgls { get; set; } = null!;
         public virtual DbSet<Calisma> Calismas { get; set; } = null!;
+        public virtual DbSet<CalismaSaatizinZorunlusaat> CalismaSaatizinZorunlusaats { get; set; } = null!;
         public virtual DbSet<Calismablg1> Calismablg1s { get; set; } = null!;
         public virtual DbSet<Calisonay> Calisonays { get; set; } = null!;
         public virtual DbSet<Calsurelimit> Calsurelimits { get; set; } = null!;
@@ -252,10 +254,12 @@ namespace DataAccess.Concrete.EntityFramework
         public virtual DbSet<Otorapor> Otorapors { get; set; } = null!;
         public virtual DbSet<Otorpkolon> Otorpkolons { get; set; } = null!;
         public virtual DbSet<Otorpparam> Otorpparams { get; set; } = null!;
+        public virtual DbSet<PasifDonem> PasifDonems { get; set; } = null!;
         public virtual DbSet<Perarsiv1> Perarsiv1s { get; set; } = null!;
         public virtual DbSet<Personel> Personels { get; set; } = null!;
         public virtual DbSet<Personel1> Personel1s { get; set; } = null!;
         public virtual DbSet<PersonelAmir> PersonelAmirs { get; set; } = null!;
+        public virtual DbSet<PersonelShift> PersonelShifts { get; set; } = null!;
         public virtual DbSet<Personelamir1> Personelamirs1 { get; set; } = null!;
         public virtual DbSet<Pertipi> Pertipis { get; set; } = null!;
         public virtual DbSet<Pertran> Pertrans { get; set; } = null!;
@@ -277,7 +281,9 @@ namespace DataAccess.Concrete.EntityFramework
         public virtual DbSet<PuantajToleransLog> PuantajToleransLogs { get; set; } = null!;
         public virtual DbSet<Puanturu> Puanturus { get; set; } = null!;
         public virtual DbSet<Rapor> Rapors { get; set; } = null!;
+        public virtual DbSet<RaporHareket> RaporHarekets { get; set; } = null!;
         public virtual DbSet<Refidlog> Refidlogs { get; set; } = null!;
+        public virtual DbSet<RpOzelrapor> RpOzelrapors { get; set; } = null!;
         public virtual DbSet<Rpalan> Rpalans { get; set; } = null!;
         public virtual DbSet<Rpalanstd> Rpalanstds { get; set; } = null!;
         public virtual DbSet<Rpgrup> Rpgrups { get; set; } = null!;
@@ -315,6 +321,7 @@ namespace DataAccess.Concrete.EntityFramework
         public virtual DbSet<Serdinlenme> Serdinlenmes { get; set; } = null!;
         public virtual DbSet<Serizin> Serizins { get; set; } = null!;
         public virtual DbSet<Servi> Servis { get; set; } = null!;
+        public virtual DbSet<Shift> Shifts { get; set; } = null!;
         public virtual DbSet<Sirket> Sirkets { get; set; } = null!;
         public virtual DbSet<Sisgk> Sisgks { get; set; } = null!;
         public virtual DbSet<Sismesai> Sismesais { get; set; } = null!;
@@ -362,6 +369,7 @@ namespace DataAccess.Concrete.EntityFramework
         public virtual DbSet<Yetkimenu> Yetkimenus { get; set; } = null!;
         public virtual DbSet<Yetkisirket> Yetkisirkets { get; set; } = null!;
         public virtual DbSet<Yetkitablo> Yetkitablos { get; set; } = null!;
+        public virtual DbSet<Yiliz> Yilizs { get; set; } = null!;
         public virtual DbSet<YilizMahsuptar> YilizMahsuptars { get; set; } = null!;
         public virtual DbSet<Yilizhesap1> Yilizhesap1s { get; set; } = null!;
         public virtual DbSet<Yilizhuk> Yilizhuks { get; set; } = null!;
@@ -1250,6 +1258,25 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.Yuvarla).HasColumnName("YUVARLA");
             });
 
+            modelBuilder.Entity<CalismaSaatizinZorunlusaat>(entity =>
+            {
+                entity.HasKey(e => e.Indo);
+
+                entity.ToTable("CALISMA_SAATIZIN_ZORUNLUSAAT");
+
+                entity.Property(e => e.Indo).HasColumnName("INDO");
+
+                entity.Property(e => e.Bassaat)
+                    .HasColumnType("datetime")
+                    .HasColumnName("BASSAAT");
+
+                entity.Property(e => e.Bitsaat)
+                    .HasColumnType("datetime")
+                    .HasColumnName("BITSAAT");
+
+                entity.Property(e => e.Clkodu).HasColumnName("CLKODU");
+            });
+
             modelBuilder.Entity<Calismablg1>(entity =>
             {
                 entity.HasKey(e => e.Idno);
@@ -1279,11 +1306,12 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasColumnType("datetime")
                     .HasColumnName("CKSTAR");
 
+                entity.Property(e => e.Emekli).HasColumnName("EMEKLI");
+
                 entity.Property(e => e.Ogrdur)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("OGRDUR")
-                    .IsFixedLength();
+                    .HasColumnName("OGRDUR");
 
                 entity.Property(e => e.Otrtar)
                     .HasColumnType("datetime")
@@ -1314,6 +1342,10 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .HasColumnName("SSKNO");
+
+                entity.Property(e => e.Ssktar)
+                    .HasColumnType("datetime")
+                    .HasColumnName("SSKTAR");
 
                 entity.Property(e => e.Tasno)
                     .HasMaxLength(20)
@@ -1626,6 +1658,11 @@ namespace DataAccess.Concrete.EntityFramework
                     .IsUnicode(false)
                     .HasColumnName("ISLEMTURU");
 
+                entity.Property(e => e.Iznturu)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("IZNTURU");
+
                 entity.Property(e => e.Katsayi).HasColumnName("KATSAYI");
 
                 entity.Property(e => e.PrmIdno).HasColumnName("PRM_IDNO");
@@ -1726,6 +1763,10 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.Clkodu).HasColumnName("CLKODU");
 
                 entity.Property(e => e.Gun).HasColumnName("GUN");
+
+                entity.Property(e => e.HtPazar)
+                    .HasColumnName("HT_PAZAR")
+                    .HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.Htkodu).HasColumnName("HTKODU");
 
@@ -5161,6 +5202,10 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasColumnName("GCKODU")
                     .IsFixedLength();
 
+                entity.Property(e => e.HareketIdno)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("HAREKET_IDNO");
+
                 entity.Property(e => e.Linkid).HasColumnName("LINKID");
 
                 entity.Property(e => e.Neden).HasColumnName("NEDEN");
@@ -5965,6 +6010,10 @@ namespace DataAccess.Concrete.EntityFramework
                     .ValueGeneratedNever()
                     .HasColumnName("IDNO");
 
+                entity.Property(e => e.AylikLimitSure)
+                    .HasColumnName("AYLIK_LIMIT_SURE")
+                    .HasDefaultValueSql("((0))");
+
                 entity.Property(e => e.AylikPuantaj).HasColumnName("AYLIK_PUANTAJ");
 
                 entity.Property(e => e.Clkodu).HasColumnName("CLKODU");
@@ -6652,6 +6701,8 @@ namespace DataAccess.Concrete.EntityFramework
 
                 entity.Property(e => e.FmkoduGt).HasColumnName("FMKODU_GT");
 
+                entity.Property(e => e.FmkoduGt2).HasColumnName("FMKODU_GT2");
+
                 entity.Property(e => e.FmkoduHi).HasColumnName("FMKODU_HI");
 
                 entity.Property(e => e.FmkoduHt).HasColumnName("FMKODU_HT");
@@ -6700,6 +6751,8 @@ namespace DataAccess.Concrete.EntityFramework
 
                 entity.Property(e => e.HaftalikToplamCalisma).HasColumnName("HAFTALIK_TOPLAM_CALISMA");
 
+                entity.Property(e => e.HaftalikVardiyaKontrol).HasColumnName("HAFTALIK_VARDIYA_KONTROL");
+
                 entity.Property(e => e.IzinKodu).HasColumnName("IZIN_KODU");
 
                 entity.Property(e => e.IzinSuresi)
@@ -6724,11 +6777,15 @@ namespace DataAccess.Concrete.EntityFramework
 
                 entity.Property(e => e.OrjinalAylikMesai).HasColumnName("ORJINAL_AYLIK_MESAI");
 
+                entity.Property(e => e.PersonelBazliMesai).HasColumnName("PERSONEL_BAZLI_MESAI");
+
                 entity.Property(e => e.Srkodu).HasColumnName("SRKODU");
 
                 entity.Property(e => e.TekVardiyayiDuzenleme).HasColumnName("TEK_VARDIYAYI_DUZENLEME");
 
                 entity.Property(e => e.TumMesaileriDagit).HasColumnName("TUM_MESAILERI_DAGIT");
+
+                entity.Property(e => e.TumMesaileriGunduzeDagit).HasColumnName("TUM_MESAILERI_GUNDUZE_DAGIT");
 
                 entity.Property(e => e.VardiyaDuzenle).HasColumnName("VARDIYA_DUZENLE");
 
@@ -7009,6 +7066,10 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.HaftaTatiliOnay).HasColumnName("HAFTA_TATILI_ONAY");
 
                 entity.Property(e => e.HareketEklemeOnay).HasColumnName("HAREKET_EKLEME_ONAY");
+
+                entity.Property(e => e.HareketGecmisislem)
+                    .HasColumnName("HAREKET_GECMISISLEM")
+                    .HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.HareketTablo)
                     .HasMaxLength(20)
@@ -12448,6 +12509,25 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasColumnName("TIPI");
             });
 
+            modelBuilder.Entity<PasifDonem>(entity =>
+            {
+                entity.HasKey(e => e.Idno);
+
+                entity.ToTable("PASIF_DONEM");
+
+                entity.Property(e => e.Idno).HasColumnName("IDNO");
+
+                entity.Property(e => e.Bastarih)
+                    .HasColumnType("datetime")
+                    .HasColumnName("BASTARIH");
+
+                entity.Property(e => e.Bittarih)
+                    .HasColumnType("datetime")
+                    .HasColumnName("BITTARIH");
+
+                entity.Property(e => e.Srkodu).HasColumnName("SRKODU");
+            });
+
             modelBuilder.Entity<Perarsiv1>(entity =>
             {
                 entity.HasKey(e => e.Idno);
@@ -12876,7 +12956,7 @@ namespace DataAccess.Concrete.EntityFramework
                     .IsFixedLength();
 
                 entity.Property(e => e.Servis)
-                    .HasMaxLength(10)
+                    .HasMaxLength(15)
                     .IsUnicode(false)
                     .HasColumnName("SERVIS")
                     .IsFixedLength();
@@ -12884,6 +12964,8 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.Servistar)
                     .HasColumnType("datetime")
                     .HasColumnName("SERVISTAR");
+
+                entity.Property(e => e.Shiftid).HasColumnName("SHIFTID");
 
                 entity.Property(e => e.Sifre)
                     .HasMaxLength(50)
@@ -12917,6 +12999,8 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasMaxLength(7)
                     .IsUnicode(false)
                     .HasColumnName("UCRETTURU");
+
+                entity.Property(e => e.Weekofyear).HasColumnName("WEEKOFYEAR");
 
                 entity.Property(e => e.Yetkituru)
                     .HasColumnName("YETKITURU")
@@ -13022,6 +13106,35 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.VardiyaOnay).HasColumnName("VARDIYA_ONAY");
 
                 entity.Property(e => e.YmkModulDurumu).HasColumnName("YMK_MODUL_DURUMU");
+            });
+
+            modelBuilder.Entity<PersonelShift>(entity =>
+            {
+                entity.ToTable("PersonelShift");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Author).HasMaxLength(50);
+
+                entity.Property(e => e.CreateDate).HasMaxLength(50);
+
+                entity.Property(e => e.DepId)
+                    .HasMaxLength(20)
+                    .HasColumnName("DepID");
+
+                entity.Property(e => e.ServiceId)
+                    .HasMaxLength(20)
+                    .HasColumnName("ServiceID");
+
+                entity.Property(e => e.ShiftId).HasColumnName("ShiftID");
+
+                entity.Property(e => e.SicilNo)
+                    .HasMaxLength(20)
+                    .HasColumnName("sicilNo");
+
+                entity.Property(e => e.StationId)
+                    .HasMaxLength(20)
+                    .HasColumnName("StationID");
             });
 
             modelBuilder.Entity<Personelamir1>(entity =>
@@ -13493,10 +13606,20 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasColumnName("GUN_HESAPLA")
                     .HasDefaultValueSql("((0))");
 
+                entity.Property(e => e.Hesapzaman)
+                    .HasColumnType("datetime")
+                    .HasColumnName("HESAPZAMAN")
+                    .HasDefaultValueSql("(getdate())");
+
                 entity.Property(e => e.Izahat)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("IZAHAT");
+
+                entity.Property(e => e.Kullanici)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("KULLANICI");
 
                 entity.Property(e => e.Neden)
                     .HasMaxLength(50)
@@ -13754,6 +13877,62 @@ namespace DataAccess.Concrete.EntityFramework
                     .IsFixedLength();
             });
 
+            modelBuilder.Entity<RaporHareket>(entity =>
+            {
+                entity.HasKey(e => e.Idno)
+                    .HasName("PK_GPRAPOR_HAREKET");
+
+                entity.ToTable("RAPOR_HAREKET");
+
+                entity.Property(e => e.Idno).HasColumnName("IDNO");
+
+                entity.Property(e => e.Ciksaat1)
+                    .HasColumnType("datetime")
+                    .HasColumnName("CIKSAAT1");
+
+                entity.Property(e => e.Ciksaat2)
+                    .HasColumnType("datetime")
+                    .HasColumnName("CIKSAAT2");
+
+                entity.Property(e => e.Ciktarih1)
+                    .HasColumnType("datetime")
+                    .HasColumnName("CIKTARIH1");
+
+                entity.Property(e => e.Ciktarih2)
+                    .HasColumnType("datetime")
+                    .HasColumnName("CIKTARIH2");
+
+                entity.Property(e => e.Girsaat1)
+                    .HasColumnType("datetime")
+                    .HasColumnName("GIRSAAT1");
+
+                entity.Property(e => e.Girsaat2)
+                    .HasColumnType("datetime")
+                    .HasColumnName("GIRSAAT2");
+
+                entity.Property(e => e.Girtarih1)
+                    .HasColumnType("datetime")
+                    .HasColumnName("GIRTARIH1");
+
+                entity.Property(e => e.Girtarih2)
+                    .HasColumnType("datetime")
+                    .HasColumnName("GIRTARIH2");
+
+                entity.Property(e => e.Kladi)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("KLADI");
+
+                entity.Property(e => e.Prsicil)
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnName("PRSICIL");
+
+                entity.Property(e => e.Tarih)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TARIH");
+            });
+
             modelBuilder.Entity<Refidlog>(entity =>
             {
                 entity.HasKey(e => e.Zaman);
@@ -13778,6 +13957,47 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasMaxLength(30)
                     .IsUnicode(false)
                     .HasColumnName("YAZILAN");
+            });
+
+            modelBuilder.Entity<RpOzelrapor>(entity =>
+            {
+                entity.HasKey(e => e.Idno);
+
+                entity.ToTable("RP_OZELRAPOR");
+
+                entity.Property(e => e.Idno).HasColumnName("IDNO");
+
+                entity.Property(e => e.GrupAlan)
+                    .HasMaxLength(500)
+                    .IsUnicode(false)
+                    .HasColumnName("GRUP_ALAN");
+
+                entity.Property(e => e.Grupla).HasColumnName("GRUPLA");
+
+                entity.Property(e => e.RaporAdi)
+                    .HasMaxLength(500)
+                    .IsUnicode(false)
+                    .HasColumnName("RAPOR_ADI");
+
+                entity.Property(e => e.RaporKodu)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("RAPOR_KODU");
+
+                entity.Property(e => e.Sayalan)
+                    .HasMaxLength(4000)
+                    .IsUnicode(false)
+                    .HasColumnName("SAYALAN");
+
+                entity.Property(e => e.StoredProcedure)
+                    .HasMaxLength(500)
+                    .IsUnicode(false)
+                    .HasColumnName("STORED_PROCEDURE");
+
+                entity.Property(e => e.Toplamalan)
+                    .HasMaxLength(4000)
+                    .IsUnicode(false)
+                    .HasColumnName("TOPLAMALAN");
             });
 
             modelBuilder.Entity<Rpalan>(entity =>
@@ -14985,6 +15205,13 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasColumnName("TURU");
             });
 
+            modelBuilder.Entity<Shift>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.ShiftName).HasMaxLength(50);
+            });
+
             modelBuilder.Entity<Sirket>(entity =>
             {
                 entity.HasKey(e => e.Kodu);
@@ -15958,7 +16185,7 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.Ayucr).HasColumnName("AYUCR");
 
                 entity.Property(e => e.Banka)
-                    .HasMaxLength(25)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("BANKA");
 
@@ -15968,10 +16195,9 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasColumnName("DIREKT_ENDIREKT");
 
                 entity.Property(e => e.Hesap)
-                    .HasMaxLength(10)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
-                    .HasColumnName("HESAP")
-                    .IsFixedLength();
+                    .HasColumnName("HESAP");
 
                 entity.Property(e => e.Iban)
                     .HasMaxLength(100)
@@ -15979,7 +16205,7 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasColumnName("IBAN");
 
                 entity.Property(e => e.Il)
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("IL");
 
@@ -15997,21 +16223,19 @@ namespace DataAccess.Concrete.EntityFramework
                     .IsFixedLength();
 
                 entity.Property(e => e.Sgkad)
-                    .HasMaxLength(20)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("SGKAD");
 
                 entity.Property(e => e.Sgkno)
-                    .HasMaxLength(10)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
-                    .HasColumnName("SGKNO")
-                    .IsFixedLength();
+                    .HasColumnName("SGKNO");
 
                 entity.Property(e => e.Sgktur)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false)
-                    .HasColumnName("SGKTUR")
-                    .IsFixedLength();
+                    .HasColumnName("SGKTUR");
 
                 entity.Property(e => e.Sosyar)
                     .HasMaxLength(5)
@@ -16020,10 +16244,9 @@ namespace DataAccess.Concrete.EntityFramework
                     .IsFixedLength();
 
                 entity.Property(e => e.Sube)
-                    .HasMaxLength(10)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
-                    .HasColumnName("SUBE")
-                    .IsFixedLength();
+                    .HasColumnName("SUBE");
 
                 entity.Property(e => e.Yolpar)
                     .HasMaxLength(5)
@@ -16500,6 +16723,8 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.Posta156).HasColumnName("POSTA156");
 
                 entity.Property(e => e.Posta157).HasColumnName("POSTA157");
+
+                entity.Property(e => e.Posta41).HasColumnName("POSTA41");
 
                 entity.Property(e => e.Posta50).HasColumnName("POSTA50");
 
@@ -17375,6 +17600,62 @@ namespace DataAccess.Concrete.EntityFramework
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("TBADI");
+            });
+
+            modelBuilder.Entity<Yiliz>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("YILIZ");
+
+                entity.Property(e => e.Barkod)
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnName("BARKOD");
+
+                entity.Property(e => e.Gckodu)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .HasColumnName("GCKODU")
+                    .IsFixedLength();
+
+                entity.Property(e => e.Idno).HasColumnName("IDNO");
+
+                entity.Property(e => e.Linkid).HasColumnName("LINKID");
+
+                entity.Property(e => e.Neden).HasColumnName("NEDEN");
+
+                entity.Property(e => e.Otarih)
+                    .HasColumnType("datetime")
+                    .HasColumnName("OTARIH");
+
+                entity.Property(e => e.Ozaman)
+                    .HasColumnType("datetime")
+                    .HasColumnName("OZAMAN");
+
+                entity.Property(e => e.Prsicil)
+                    .HasMaxLength(15)
+                    .IsUnicode(false)
+                    .HasColumnName("PRSICIL");
+
+                entity.Property(e => e.Sistem)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("SISTEM");
+
+                entity.Property(e => e.Tarih)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TARIH");
+
+                entity.Property(e => e.Termkodu)
+                    .HasMaxLength(3)
+                    .IsUnicode(false)
+                    .HasColumnName("TERMKODU")
+                    .IsFixedLength();
+
+                entity.Property(e => e.Zaman)
+                    .HasColumnType("datetime")
+                    .HasColumnName("ZAMAN");
             });
 
             modelBuilder.Entity<YilizMahsuptar>(entity =>

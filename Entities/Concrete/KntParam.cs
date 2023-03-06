@@ -76,5 +76,9 @@ namespace Entities.Concrete
         public bool? FmcmtOrj { get; set; }
         public bool? FmhtOrj { get; set; }
         public bool? FmgtOrj { get; set; }
+        public bool? PersonelBazliMesai { get; set; }
+        public bool? TumMesaileriGunduzeDagit { get; set; }
+        public bool? HaftalikVardiyaKontrol { get; set; }
+        public int? FmkoduGt2 { get; set; }
     }
 }

@@ -14,5 +14,6 @@ namespace Entities.Concrete
         public string? DnkSureturu { get; set; }
         public string? Islemturu { get; set; }
         public string? Clturu { get; set; }
+        public string? Iznturu { get; set; }
     }
 }

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
-using Business.Constant.Messages;
-using Core.Utilities.Results.Abstract;
-using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -13,22 +10,26 @@ namespace Business.Concrete
 {
     public class AppUserManager : IAppUserService
     {
-        IAppUserDal _appUserDal;
-        public AppUserManager(IAppUserDal appUserDal)
-        {
-            _appUserDal = appUserDal;
-        }
-        public IResult Add(AppUser appUser)
-        {
+        IAppUserDal _userDal;
 
-            _appUserDal.Add(appUser);
-            return new SuccessResult(Message.AddedSuccess);
+        public AppUserManager(IAppUserDal userDal)
+        {
+            _userDal = userDal;
         }
 
-        public IDataResult<List<AppUser>> GetAll()
+        public List<AppOperationClaim> GetClaims(AppUser user)
         {
-            var res = _appUserDal.GetAll();
-            return new SuccessDataResult<List<AppUser>>(res, Message.AddedSuccess);
+            return _userDal.GetClaims(user);
+        }
+
+        public void Add(AppUser user)
+        {
+            _userDal.Add(user);
+        }
+
+        public AppUser GetByMail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }

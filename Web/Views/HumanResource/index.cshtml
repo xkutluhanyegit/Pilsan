@@ -1,4 +1,5 @@
-@model IEnumerable<Entities.DTOs.PersonelInfoDto>;
+@model IEnumerable<Entities.DTOs.PersonelDetailDto>
+
 @{
   ViewData["Title"] = "İnsan Kaynakları";
 }
@@ -73,7 +74,7 @@
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table id="example1" class="table table-bordered table-striped">
+    <table id="example1" class="table table-bordered table-striped table-sm">
       <thead>
         <tr>
           <th>#</th>
@@ -96,8 +97,8 @@
               <td>@item.SicilNo</td>
               <td>@item.DepartmanName</td>
               <td>@item.Name @item.Surname</td>
-              <td>@item.Shuttle</td>
-              <td>@item.Station</td>
+              <td>@item.ServiceName</td>
+              <td>@item.StationName</td>
               <td>Detay</td>
             </tr>
             count++;

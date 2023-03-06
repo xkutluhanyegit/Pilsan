@@ -10,8 +10,15 @@ namespace Business.Abstract
 {
     public interface IPersonelService
     {
+        IResult Update(Personel1 personel);
+
+        IDataResult<Personel1> Get(string sicilNo);
         IDataResult<List<Personel1>> GetAll();
-        IDataResult<List<PersonelInfoDto>> GetPersonelInfoDto();
-        IDataResult<List<PersonelInfoDto>> GetPersonelInfoDtoByDepId(string depID);
+        IDataResult<List<PersonelDetailDto>> GetAllPersonelDetailDto();
+        IDataResult<List<PersonelDetailDto>> GetByDepaartPrsonelDetailDto(string DepId);
+        IDataResult<List<PersonelDetailDto>> GetByNoShiftPersonelDetailDto(string DepId);
+        IDataResult<List<PersonelDetailDto>> GetByYesShiftPersonelDetailDto(string DepId);
+
+
     }
 }

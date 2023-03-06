@@ -13,5 +13,6 @@ namespace Entities.Concrete
         public DateTime? Sure { get; set; }
         public string Islem { get; set; } = null!;
         public short? Htkodu { get; set; }
+        public bool? HtPazar { get; set; }
     }
 }

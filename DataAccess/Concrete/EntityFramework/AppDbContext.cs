@@ -11,10 +11,10 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source =  /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/SQLite/App.db");
+            optionsBuilder.UseSqlite(@"Data Source = /Users/kutluhanyegit/Desktop/Pilsan/DataAccess/SQLite/App.db");
         }
-
         public DbSet<AppUser> appUsers { get; set; }
-        public DbSet<AppRole> appRoles { get; set; }
+        public DbSet<AppOperationClaim> appOperationClaims { get; set; }
+        public DbSet<AppUserOperationClaim> appUserOperationClaims { get; set; }
     }
 }

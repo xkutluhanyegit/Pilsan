@@ -20,16 +20,11 @@ namespace Web.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            // var res = _personelService.GetByActiveWorkers();
-            // if (res.Success)
-            // {
-            //     ViewBag.Data = res.Data.Count;
-            //     return View(res.Data);
-            // }
-            var res = _personelService.GetPersonelInfoDto();
+            var res = _personelService.GetAllPersonelDetailDto();
+
             if (res.Success)
             {
-                ViewBag.Data = res.Data.Count;
+                ViewBag.Data = res.Data.Count();
                 return View(res.Data);
             }
             return View();

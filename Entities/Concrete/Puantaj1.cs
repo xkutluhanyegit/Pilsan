@@ -21,5 +21,7 @@ namespace Entities.Concrete
         public bool? GunHesapla { get; set; }
         public DateTime? DnkOrjsure { get; set; }
         public string? DnkDonem { get; set; }
+        public string? Kullanici { get; set; }
+        public DateTime? Hesapzaman { get; set; }
     }
 }

@@ -7,6 +7,7 @@ namespace Entities.Concrete
     {
         public int Srkodu { get; set; }
         public DateTime Tarih { get; set; }
+        public short? Posta41 { get; set; }
         public short? Posta50 { get; set; }
         public short? Posta55 { get; set; }
         public short? Posta60 { get; set; }

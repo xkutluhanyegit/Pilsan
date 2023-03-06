@@ -17,5 +17,6 @@ namespace Entities.Concrete
         public DateTime? Otarih { get; set; }
         public DateTime? Ozaman { get; set; }
         public string? Sistem { get; set; }
+        public int HareketIdno { get; set; }
     }
 }

@@ -20,5 +20,7 @@ namespace Entities.Concrete
         public string? Otrulke { get; set; }
         public DateTime? Ckstar { get; set; }
         public string? Ogrdur { get; set; }
+        public DateTime? Ssktar { get; set; }
+        public bool? Emekli { get; set; }
     }
 }
