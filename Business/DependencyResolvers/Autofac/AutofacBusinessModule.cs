@@ -26,8 +26,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<PersonelShiftManager>().As<IPersonelShiftService>().SingleInstance();
             builder.RegisterType<EfPersonelShiftDal>().As<IPersonelShiftDal>().SingleInstance();
 
-            builder.RegisterType<AppUserManager>().As<IAppUserService>();
-            builder.RegisterType<EfAppUserDal>().As<IAppUserDal>();
+
+
+
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();

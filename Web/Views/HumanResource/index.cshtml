@@ -7,31 +7,38 @@
 <!-- Info boxes -->
 <div class="row">
   <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box">
-      <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-industry"></i></span>
+    <a href="/insan-kaynaklari/shift1-detay" class="text-dark">
+      <div class="info-box">
+        <span class="info-box-icon bg-info elevation-1"><i class="fa-solid fa-clock"></i></span>
 
-      <div class="info-box-content">
-        <span class="info-box-text">Toplam Çalışan Sayısı</span>
-        <span class="info-box-number">
-          @ViewBag.Data
-          <small></small>
-        </span>
+        <div class="info-box-content">
+          <span class="info-box-number">08:00 - 16:00</span>
+          <span class="info-box-number">
+            @ViewBag.shift1
+            <small></small>
+          </span>
+        </div>
+        <!-- /.info-box-content -->
       </div>
-      <!-- /.info-box-content -->
-    </div>
+    </a>
+
     <!-- /.info-box -->
   </div>
   <!-- /.col -->
   <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box mb-3">
-      <span class="info-box-icon bg-danger elevation-1"></span>
+    <a href="/insan-kaynaklari/shift2-detay" class="text-dark">
+      <div class="info-box mb-3">
+        <span class="info-box-icon bg-danger elevation-1"><i class="fa-solid fa-clock"></i></span>
 
-      <div class="info-box-content">
-        <span class="info-box-text">Title2</span>
-        <span class="info-box-number">00,00</span>
+        <div class="info-box-content">
+          <span class="info-box-number">16:00 - 24:00</span>
+          <span class="info-box-number">
+            @ViewBag.shift2
+          </span>
+        </div>
+        <!-- /.info-box-content -->
       </div>
-      <!-- /.info-box-content -->
-    </div>
+    </a>
     <!-- /.info-box -->
   </div>
   <!-- /.col -->
@@ -40,28 +47,36 @@
   <div class="clearfix hidden-md-up"></div>
 
   <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box mb-3">
-      <span class="info-box-icon bg-success elevation-1"></span>
+    <a href="/insan-kaynaklari/shift3-detay" class="text-dark">
+      <div class="info-box mb-3">
+        <span class="info-box-icon bg-success elevation-1"><i class="fa-solid fa-clock"></i></span>
 
-      <div class="info-box-content">
-        <span class="info-box-text">Title3</span>
-        <span class="info-box-number">00,00</span>
+        <div class="info-box-content">
+          <span class="info-box-number">00:00 - 08:00</span>
+          <span class="info-box-number">
+            @ViewBag.shift3
+          </span>
+        </div>
+        <!-- /.info-box-content -->
       </div>
-      <!-- /.info-box-content -->
-    </div>
+    </a>
     <!-- /.info-box -->
   </div>
   <!-- /.col -->
   <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box mb-3">
-      <span class="info-box-icon bg-warning elevation-1"></span>
+    <a href="/insan-kaynaklari/shift4-detay" class="text-dark">
+      <div class="info-box mb-3">
+        <span class="info-box-icon bg-warning elevation-1"><i class="fa-solid fa-clock"></i></span>
 
-      <div class="info-box-content">
-        <span class="info-box-text">Title4</span>
-        <span class="info-box-number">00,00</span>
+        <div class="info-box-content">
+          <span class="info-box-number">08:00 - 18:00</span>
+          <span class="info-box-number">
+            @ViewBag.shift4
+          </span>
+        </div>
+        <!-- /.info-box-content -->
       </div>
-      <!-- /.info-box-content -->
-    </div>
+    </a>
     <!-- /.info-box -->
   </div>
   <!-- /.col -->
@@ -70,7 +85,8 @@
 <!-- /.row -->
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Personel Listesi</h3>
+    <h3 style="font-weight: bold;" class="card-title float-left">Personel Listesi </h3>
+    <a href="#" class="btn btn-success float-right"><i class="fa-regular fa-file-lines"></i> Fazla Mesai Listesi</a>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
@@ -78,12 +94,13 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>TC Kimlik</th>
           <th>Sicil No</th>
           <th>Departman</th>
           <th>Personel Ad Soyad</th>
           <th>Bölge</th>
           <th>Durak</th>
-          <th>Detay</th>
+          <th>Vardiya</th>
         </tr>
       </thead>
       <tbody>
@@ -94,12 +111,13 @@
           {
             <tr>
               <td>@count</td>
+              <td>@item.TCKN</td>
               <td>@item.SicilNo</td>
               <td>@item.DepartmanName</td>
               <td>@item.Name @item.Surname</td>
               <td>@item.ServiceName</td>
               <td>@item.StationName</td>
-              <td>Detay</td>
+              <td>@item.ShiftName</td>
             </tr>
             count++;
           }
@@ -109,12 +127,13 @@
       <tfoot>
         <tr>
           <th>#</th>
+          <th>TC Kimlik</th>
           <th>Sicil No</th>
           <th>Departman</th>
           <th>Personel Ad Soyad</th>
           <th>Bölge</th>
           <th>Durak</th>
-          <th>Detay</th>
+          <th>Vardiya</th>
         </tr>
       </tfoot>
     </table>

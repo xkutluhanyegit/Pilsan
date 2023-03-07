@@ -1,0 +1,66 @@
+@model IEnumerable<IGrouping<string,Entities.DTOs.PersonelDetailDto>>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "İnsan Kaynakları 16:00 - 24:00 Detay";
+}
+
+<!-- /.row -->
+<div class="card">
+    <div class="card-header">
+
+        <h3 class="card-title">16:00 - 24:00 Personel Durak Listesi</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example-shift" class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th style="width: 75%;">Servis</th>
+                    <th style="width: 25%;">#</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    @foreach (var item in Model)
+                    {
+                        <tr class="clickable bg-dark" data-toggle="collapse" id="row1" data-target=".row1">
+                            <td style="max-width: 75%;">@item.Key</td>
+                            <td style="max-width: 25%;">@item.Count()</td>
+
+
+                            @* @foreach (var x in item.GroupBy(p => p.StationName))
+                                {
+                                <tr>
+                                <td>@x.Key</td>
+                                <td>@x.Count()</td>
+                                </tr> *@
+
+
+                        </tr>
+                        @foreach (var x in item.GroupBy(p => p.StationName))
+                        {
+                            <tr class="collapse row1">
+                                <td style="width: 75%;">@x.Key</td>
+                                <td style="width: 25%;">@x.Count()</td>
+                            </tr>
+                        }
+
+                    }
+                }
+
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th style="width: 75%;">Servis</th>
+                    <th style="width: 25%;">#</th>
+
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

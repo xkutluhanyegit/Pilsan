@@ -51,11 +51,22 @@ namespace Business.Concrete
             return new SuccessDataResult<List<PersonelDetailDto>>(res, Message.ListedSuccces);
         }
 
+
         public IDataResult<List<PersonelDetailDto>> GetByYesShiftPersonelDetailDto(string DepId)
         {
             int Week = (DateTime.Now.DayOfYear + 1) / 7;
             var res = _personelDal.GetAllPersonelDetailDto().Where(p => p.DepId == DepId && p.WeekOfYear == Week).ToList();
             return new SuccessDataResult<List<PersonelDetailDto>>(res, Message.ListedSuccces);
+        }
+
+        public IResult RemUpdate(Personel1 personel)
+        {
+            var res = _personelDal.Get(p => p.Sicilno == personel.Sicilno);
+            res.Weekofyear = 99;
+            res.Shiftid = 99;
+            _personelDal.Update(res);
+
+            return new SuccessResult(Message.AddedSuccess);
         }
 
         public IResult Update(Personel1 personel)

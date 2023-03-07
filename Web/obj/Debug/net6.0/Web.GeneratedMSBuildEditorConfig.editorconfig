@@ -11,7 +11,7 @@ build_property.RootNamespace = Web
 build_property.ProjectDir = /Users/kutluhanyegit/Desktop/Pilsan/Web/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = /Users/kutluhanyegit/Desktop/Pilsan/Web
 build_property._RazorSourceGeneratorDebug = 
 
@@ -23,12 +23,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS90ZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Home/unauth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS91bmF1dGguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/HumanResource/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSHVtYW5SZXNvdXJjZS9pbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/HumanResource/shift1_detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSHVtYW5SZXNvdXJjZS9zaGlmdDFfZGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/HumanResource/shift2_detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSHVtYW5SZXNvdXJjZS9zaGlmdDJfZGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/HumanResource/shift3_detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSHVtYW5SZXNvdXJjZS9zaGlmdDNfZGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/HumanResource/shift4_detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSHVtYW5SZXNvdXJjZS9zaGlmdDRfZGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Login/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Register/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0ZXIvaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Role/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9sZS9pbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/accept_goods.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9hY2NlcHRfZ29vZHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/battery_installation.cshtml]
@@ -39,6 +71,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9iYXR0ZXJ5X2luc3RhbGxhdGlvbl9zaGlmdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/battery_installation_shift1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9iYXR0ZXJ5X2luc3RhbGxhdGlvbl9zaGlmdDEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/furniture.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9mdXJuaXR1cmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9pbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -47,20 +87,56 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9pbmplY3Rpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/injection_shift.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9pbmplY3Rpb25fc2hpZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/maintenance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9tYWludGVuYW5jZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/molding_room.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9tb2xkaW5nX3Jvb20uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/molding_room_shift.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9tb2xkaW5nX3Jvb21fc2hpZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/planning.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9wbGFubmluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/press_shop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9wcmVzc19zaG9wLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/puffing.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9wdWZmaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/puffing_shift.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9wdWZmaW5nX3NoaWZ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/rotation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi9yb3RhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/toy_assembly.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi90b3lfYXNzZW1ibHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/toy_assembly_shift.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi90b3lfYXNzZW1ibHlfc2hpZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/warehouse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi93YXJlaG91c2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Section/warehouse_shift.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VjdGlvbi93YXJlaG91c2Vfc2hpZnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/kutluhanyegit/Desktop/Pilsan/Web/Views/Shared/Error.cshtml]

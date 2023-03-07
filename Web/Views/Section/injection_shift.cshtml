@@ -1,0 +1,125 @@
+@* @model IEnumerable<Entities.DTOs.PersonelDetailDto> *@
+@model Web.Models.PersonelDetailViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Enjeksiyon Vardiya";
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 style="font-weight: bold;" class="card-title float-left">Enjeksiyon Bölümü Vardiya Listesi </h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+
+
+        <div class="col-md-6 border-right float-left">
+            <table id="example1-shift" class="table table-sm table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Personel Ad Soyad</th>
+                        <th hidden>.</th>
+                        <th hidden>.</th>
+                        <th style="max-width: 40px;" class="text-center">Ekle</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    @* @for (int i = 0; i < Model.personelDetailDtosList.ToList().Count; i++)
+                        {
+
+                        <tr>
+                        <form asp-controller="section" asp-action="battery_installation_shift" method="post">
+                        @Model.personelDetailDtosList.ToList()[i].Name
+
+
+                        <input type="text" name="SicilNo" value="@Model.personelDetailDtosList.ToList()[i].Name">
+
+
+                        <button type="submit" class="btn btn-sm btn-outline-success">Ekle</button>
+
+                        </form>
+                        </tr>
+
+                        } *@
+
+                    @foreach (var item in Model.personelDetailViewModelList)
+                    {
+                        <tr>
+                            <form asp-controller="section" asp-action="injection_shift" method="post">
+                                <td>@item.Name @item.Surname</td>
+
+                                <td hidden><input type="text" name="SicilNo" value="@item.SicilNo"></td>
+
+                                <td hidden><input id="ShiftId" type="text" name="ShiftId" value="1"></td>
+
+                                <td class="text-center"><button type="submit"
+                                    class="btn btn-sm btn-outline-primary rounded-circle"><i
+                                        class="fa-solid fa-angles-right"></i></button></td>
+                            </form>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Personel Ad Soyad</th>
+                        <th hidden>.</th>
+                        <th hidden>.</th>
+                        <th style="max-width: 40px;" class="text-center">Ekle</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="col-md-6 border-left float-left">
+
+            <div id="radio-buttons" class="btn-group btn-group-toggle col mb-2" data-toggle="buttons">
+                <label class="btn btn-outline-primary active col-3 float-left btn-sm">
+                    <input type="radio" name="options" id="option1" value="1" autocomplete="off" checked> 08:00 -
+                    16:00
+                </label>
+                <label class="btn btn-outline-primary col-3 float-left btn-sm">
+                    <input type="radio" name="options" id="option2" value="2" autocomplete="off"> 16:00 - 24:00
+                </label>
+                <label class="btn btn-outline-primary col-3 float-left btn-sm">
+                    <input type="radio" name="options" id="option3" value="3" autocomplete="off"> 00:00 - 08:00
+                </label>
+                <label class="btn btn-outline-success col-3 float-left btn-sm">
+                    <input type="radio" name="options" id="option3" value="4" autocomplete="off"> 08:00 - 18:00
+                </label>
+            </div>
+
+            <table id="example1-shift2-result" class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Personel Ad Soyad</th>
+                        <th class="text-center">Vardiya</th>
+                        <th class="text-center">Sil</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Personel Ad Soyad</th>
+                        <th class="text-center">Vardiya</th>
+                        <th class="text-center">Sil</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+
+    </div>
+    <!-- /.card-body -->
+</div>

@@ -108,33 +108,111 @@
     </div>
     <!-- /.col -->
 
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="furniture" class="text-dark">
+            <div class="info-box mb-3">
+                <span style="background-color: #C3614C;" class="info-box-icon elevation-1 text-white"><i
+                        class="fa-solid fa-couch"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Mobilya</span>
+                    <span class="info-box-number">@ViewBag.furniture</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="maintenance" class="text-dark">
+            <div class="info-box mb-3">
+                <span style="background-color: #333399;" class="info-box-icon elevation-1 text-white"><i
+                        class="fa-solid fa-screwdriver-wrench"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Bakım Onarım</span>
+                    <span class="info-box-number">@ViewBag.maintenance</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="accept_goods" class="text-dark">
+            <div class="info-box mb-3">
+                <span style="background-color: #ff9900;" class="info-box-icon elevation-1 text-white"><i
+                        class="fa-solid fa-box-open"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Mal Kabul</span>
+                    <span class="info-box-number">@ViewBag.accepnt_goods</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="press_shop" class="text-dark">
+            <div class="info-box mb-3">
+                <span style="background-color: #669999;" class="info-box-icon elevation-1 text-white">
+                    <i class="fa-solid fa-gauge-simple-high"></i>
+                </span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Preshane</span>
+                    <span class="info-box-number">@ViewBag.press_shop</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="rotation" class="text-dark">
+            <div class="info-box mb-3">
+                <span style="background-color: #9933ff;" class="info-box-icon elevation-1 text-white">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Rotasyon</span>
+                    <span class="info-box-number">@ViewBag.rotation</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-3">
+        <a asp-controller="section" asp-action="planning" class="text-dark">
+            <div class="info-box mb-3">
+                <span style="background-color: #cccc00;" class="info-box-icon elevation-1 text-white">
+                    <i class="fa-solid fa-play"></i>
+                </span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Planlama</span>
+                    <span class="info-box-number">@ViewBag.planning</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </a>
+
+    </div>
     <!-- fix for small devices only -->
-    <div class="clearfix hidden-md-up"></div>
 
-    <div class="col-12 col-sm-6 col-md-3 disable">
-        <div class="info-box mb-3">
-            <span class="info-box-icon bg-light elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">...</span>
-                <span class="info-box-number">..</span>
-            </div>
-            <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
-    <div class="col-12 col-sm-6 col-md-3 disable">
-        <div class="info-box mb-3">
-            <span class="info-box-icon bg-light elevation-1"><i class="fas fa-users"></i></span>
-
-            <div class="info-box-content">
-                <span class="info-box-text">...</span>
-                <span class="info-box-number">..</span>
-            </div>
-            <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-    </div>
     <!-- /.col -->
 </div>

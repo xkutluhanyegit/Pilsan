@@ -88,7 +88,11 @@
               <img src="/dist/img/usericon.jpeg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">User Profile</a>
+              @if (User.Identity.IsAuthenticated)
+              {
+                <a href="#" class="d-block">@User.Identity.Name</a>
+              }
+
             </div>
           </div>
 
@@ -106,24 +110,24 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
+                  @* <li class="nav-item">
                     <a asp-controller="appuser" asp-action="index" class="nav-link active">
-                      <i class="nav-icon fa-solid fa-user-plus"></i>
-                      <p>Kullanıcılar</p>
+                    <i class="nav-icon fa-solid fa-user-plus"></i>
+                    <p>Kullanıcılar</p>
                     </a>
-                  </li>
-                  <li class="nav-item">
-                    <a asp-controller="approles" asp-action="index" class="nav-link">
-                      <i class="nav-icon fa-solid fa-flag"></i>
-                      <p>Roller</p>
+                    </li>
+                    <li class="nav-item">
+                    <a asp-controller="role" asp-action="index" class="nav-link">
+                    <i class="nav-icon fa-solid fa-flag"></i>
+                    <p>Roller</p>
                     </a>
-                  </li>
-                  <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="./index3.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Dashboard v3</p>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Dashboard v3</p>
                     </a>
-                  </li>
+                    </li> *@
                 </ul>
               </li>
               <li class="nav-item">
@@ -137,7 +141,7 @@
 
               <li class="nav-item">
                 <a asp-controller="humanresource" asp-action="index" class="nav-link">
-                  <i class="nav-icon fa-solid fa-users"></i>
+                  <i class="nav-icon fa-solid fa-users fa-xs"></i>
                   <p>
                     İnsan Kaynakları
                   </p>
@@ -149,6 +153,16 @@
                   <i class="nav-icon fa-solid fa-puzzle-piece"></i>
                   <p>
                     Bölümler
+                  </p>
+                </a>
+              </li>
+
+              <li id="logout" class="nav-item mt-5">
+                <a asp-controller="home" asp-action="logout" class="nav-link">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                  <p>
+                    Çıkış
                   </p>
                 </a>
               </li>
@@ -246,6 +260,10 @@
     <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+
+    @await RenderSectionAsync("Scripts", required: false)
+    @await Component.InvokeAsync("NToastNotify")
+    @await Component.InvokeAsync("Notyf")
 </body>
 
 </html>

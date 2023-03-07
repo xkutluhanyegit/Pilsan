@@ -1,4 +1,6 @@
 using System.Text;
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
@@ -10,7 +12,11 @@ using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using NToastNotify;
+using Web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +24,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("ConString"));
+});
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
 
 //IOC
 // builder.Services.AddSingleton<IAppUserService, AppUserManager>();
@@ -29,7 +41,7 @@ builder.Services.AddControllersWithViews();
 
 // var tokenOptions = builder.Services.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
-var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+// var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 
 // builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -68,6 +80,33 @@ var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOpt
 //     };
 // });
 
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    var cookieBuilder = new CookieBuilder();
+    cookieBuilder.Name = "PilsanCookie";
+
+    opt.LoginPath = new PathString("/giris");
+    opt.LogoutPath = new PathString("/Home/logout");
+    opt.AccessDeniedPath = "/Home/unauth";
+    opt.Cookie = cookieBuilder;
+    opt.ExpireTimeSpan = TimeSpan.FromDays(6);
+    opt.SlidingExpiration = true;
+
+});
+
+builder.Services.AddRazorPages().AddNToastNotifyNoty(new NotyOptions
+{
+    ProgressBar = true,
+    Timeout = 5000
+});
+
+builder.Services.AddNotyf(config =>
+{
+    config.DurationInSeconds = 5;
+    config.IsDismissable = true;
+    config.Position = NotyfPosition.TopRight;
+});
+
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
     .ConfigureContainer<ContainerBuilder>(builder =>
     {
@@ -91,7 +130,8 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
+app.UseNToastNotify();
+app.UseNotyf();
 
 
 app.MapControllerRoute(

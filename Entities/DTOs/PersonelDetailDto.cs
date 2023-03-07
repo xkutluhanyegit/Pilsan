@@ -24,6 +24,7 @@ namespace Entities.DTOs
         public int? WeekOfYear { get; set; }
         public string CreateDay { get; set; }
         public string Author { get; set; }
+        public string TCKN { get; set; }
 
     }
 }

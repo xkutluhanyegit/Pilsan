@@ -18,17 +18,24 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var res = from p in context.Personel1s
                           join d in context.Duraks
-                          on p.Durak equals d.DurakKodu
+                          on p.Durak equals d.DurakKodu into temps
+                          from pd in temps.DefaultIfEmpty()
 
                           join s in context.Servis
-                          on p.Servis equals s.Kodu
+                          on p.Servis equals s.Kodu into tempss
+                          from sp in tempss.DefaultIfEmpty()
 
                           join dep in context.Departmen
-                          on p.Depart equals dep.Kodu
+                          on p.Depart equals dep.Kodu into tempsss
+                          from depp in tempsss.DefaultIfEmpty()
 
                           join sh in context.Shifts
                           on p.Shiftid equals sh.ShiftCode into temp
                           from shp in temp.DefaultIfEmpty()
+
+                          join k in context.Kimlik1s
+                          on p.Sicilno equals k.Prsicil into tempssss
+                          from kp in tempssss.DefaultIfEmpty()
 
                           where p.Iscikt == null
 
@@ -38,15 +45,15 @@ namespace DataAccess.Concrete.EntityFramework
                               Surname = p.Soyadi,
                               SicilNo = p.Sicilno,
                               ShiftName = shp.ShiftName,
-                              DepId = dep.Kodu,
-                              DepartmanName = dep.Adi,
+                              DepId = depp.Kodu,
+                              DepartmanName = depp.Adi,
                               ShiftId = shp.ShiftCode,
-                              ServiceId = s.Kodu,
-                              ServiceName = s.Turu,
-                              StationId = d.DurakKodu,
-                              StationName = d.DurakAdi,
-                              WeekOfYear = p.Weekofyear
-
+                              ServiceId = sp.Kodu,
+                              ServiceName = sp.Turu,
+                              StationId = pd.DurakKodu,
+                              StationName = pd.DurakAdi,
+                              WeekOfYear = p.Weekofyear,
+                              TCKN = kp.Tckmno
                           };
 
                 return res.ToList();

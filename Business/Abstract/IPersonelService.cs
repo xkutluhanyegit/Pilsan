@@ -11,6 +11,7 @@ namespace Business.Abstract
     public interface IPersonelService
     {
         IResult Update(Personel1 personel);
+        IResult RemUpdate(Personel1 personel);
 
         IDataResult<Personel1> Get(string sicilNo);
         IDataResult<List<Personel1>> GetAll();

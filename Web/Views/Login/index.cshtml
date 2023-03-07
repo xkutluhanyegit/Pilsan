@@ -1,13 +1,13 @@
 @{
-ViewData["Title"] = "Kullanıcı Giriş";
-Layout = "_LoginLayout";
+  ViewData["Title"] = "Kullanıcı Giriş";
+  Layout = "_LoginLayout";
 }
 
 @model Web.Models.LoginViewModel
 
 <div class="login-box">
   <div class="login-logo">
-    <a asp-controller="home" asp-action="index"><img class="img-fluid" style="max-width: 200px;"
+    <a asp-controller="login" asp-action="index"><img class="img-fluid" style="max-width: 200px;"
         src="/dist/img/logo.png"></a>
   </div>
   <!-- /.login-logo -->
@@ -18,7 +18,7 @@ Layout = "_LoginLayout";
 
       <form asp-controller="login" asp-action="index" method="Post">
         <div class="input-group mb-3">
-          <input asp-for="@Model.username" type="text" class="form-control" placeholder="Kullanıcı adı">
+          <input asp-for="@Model.email" type="text" class="form-control" placeholder="Kullanıcı adı">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -35,16 +35,11 @@ Layout = "_LoginLayout";
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Beni Hatırla
-              </label>
-            </div>
+
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Giriş</button>
+            <button type="submit" class="btn btn-primary btn-block float-right">Giriş</button>
           </div>
           <!-- /.col -->
         </div>
