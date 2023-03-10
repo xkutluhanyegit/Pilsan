@@ -9,7 +9,7 @@ namespace Web.Models
 {
     public class PersonelDetailViewModel
     {
-        public IEnumerable<PersonelDetailDto> personelDetailViewModelList { get; set; }
+        public List<PersonelDetailDto> personelDetailViewModelList { get; set; }
         public Personel1 personel1 { get; set; }
         public PersonelDetailDto personelDetailViewModel { get; set; }
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constant.Messages;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -72,9 +73,7 @@ namespace Web.Controllers
 
             if (res.Success)
             {
-                PersonelDetailViewModel pdvm = new PersonelDetailViewModel();
-                pdvm.personelDetailViewModelList = res.Data.ToList();
-                return View(pdvm);
+                return View(res.Data);
             }
 
             return View();
@@ -83,14 +82,25 @@ namespace Web.Controllers
 
         [HttpPost("akulu-montaj-vardiya")]
         [Authorize(Roles = "akulu-montaj,admin")]
-        public IActionResult battery_installation_shift(Personel1 personel)
+        public IActionResult battery_installation_shift(List<PersonelDetailDto> personel, int shiftid)
         {
-            var res = _personelService.Update(personel);
-            if (res.Success)
+            for (int i = 0; i < personel.Count(); i++)
+            {
+                if (personel[i].CheckStatus)
+                {
+                    var personelGet = _personelService.Get(personel[i].SicilNo).Data;
+                    personelGet.Shiftid = shiftid;
+
+                    var res = _personelService.Update(personelGet);
+                }
+            }
+
+            var resData = _personelService.GetByNoShiftPersonelDetailDto(DepartmanCode.battery_installation);
+
+            if (resData.Success)
             {
                 return RedirectToAction("battery_installation_shift", "section");
             }
-
             return View();
         }
 

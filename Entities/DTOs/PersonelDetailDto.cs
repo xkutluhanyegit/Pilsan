@@ -9,6 +9,7 @@ namespace Entities.DTOs
 {
     public class PersonelDetailDto : IDto
     {
+        public bool CheckStatus { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string SicilNo { get; set; }
