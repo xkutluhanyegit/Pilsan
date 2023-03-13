@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
-using Business.Constant.Messages;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -15,18 +14,31 @@ namespace Business.Concrete
     public class PersonelShiftManager : IPersonelShiftService
     {
         IPersonelShiftDal _personelShiftDal;
-        public PersonelShiftManager(IPersonelShiftDal personelShiftDal)
+        IPersonelService _personelDal;
+        public PersonelShiftManager(IPersonelShiftDal personelShiftDal, IPersonelService personelDal)
         {
             _personelShiftDal = personelShiftDal;
+            _personelDal = personelDal;
         }
-        public IResult Add(PersonelShift personelShift)
+        public IResult Add(PersonelDetailDto personelDetailDto, int shiftid)
         {
-            personelShift.CreateDate = DateTime.Now.ToShortDateString();
-            personelShift.WeekOfYear = (DateTime.Now.DayOfYear + 1) / 7;
-            _personelShiftDal.Add(personelShift);
-            return new SuccessResult(Message.AddedSuccess);
+            var getPersonel = _personelDal.Get(personelDetailDto.SicilNo).Data;
+
+            Personelshift ps = new Personelshift();
+
+            ps.SicilNo = getPersonel.Sicilno;
+            ps.Author = personelDetailDto.Author;
+            ps.DeptCode = getPersonel.Depart;
+            ps.ServiceCode = personelDetailDto.ServiceId;
+            ps.StationCode = personelDetailDto.StationId;
+            ps.ShiftCode = shiftid;
+            ps.ShiftStart = DateTime.Now.ToShortDateString();
+            ps.ShiftEnd = "";
+
+            _personelShiftDal.Add(ps);
+            return new SuccessResult();
+
+
         }
-
-
     }
 }

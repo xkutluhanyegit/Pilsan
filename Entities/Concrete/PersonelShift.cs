@@ -4,16 +4,16 @@ using Core.Entities;
 
 namespace Entities.Concrete
 {
-    public partial class PersonelShift : IEntity
+    public partial class Personelshift : IEntity
     {
         public int Id { get; set; }
-        public string SicilNo { get; set; } = null!;
-        public int ShiftId { get; set; }
-        public string DepId { get; set; } = null!;
-        public string ServiceId { get; set; } = null!;
-        public string StationId { get; set; } = null!;
-        public int WeekOfYear { get; set; }
-        public string? CreateDate { get; set; }
+        public string? SicilNo { get; set; }
+        public int? ShiftCode { get; set; }
+        public string? StationCode { get; set; }
+        public string? ServiceCode { get; set; }
+        public string? DeptCode { get; set; }
+        public string? ShiftStart { get; set; }
+        public string? ShiftEnd { get; set; }
         public string? Author { get; set; }
     }
 }

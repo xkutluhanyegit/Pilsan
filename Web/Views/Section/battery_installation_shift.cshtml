@@ -10,6 +10,7 @@
 }
 
 <div class="card-deck">
+    @* Vardiya Add *@
     <div class="card">
         <div class="card-header bg-danger">
             <div class="card-text">@hafta .Hafta Vardiya Atanmamış Personel Listesi</div>
@@ -55,13 +56,16 @@
                             <th style="max-width: 25px;">#</th>
                             <th style="max-width: 25px;"><i class="fa-solid fa-check"></i></th>
                             <th hidden>Sicil</th>
+                            <th hidden>.</th>
+                            <th hidden>.</th>
+                            <th hidden>.</th>
                             <th>Personel Ad Soyad</th>
                         </tr>
 
                     </thead>
                     <tbody>
 
-                        <input hidden type="text" name="shiftidd" id="shiftid" value="1">
+                        <input hidden type="text" name="shiftidd" id="shiftidd" value="1">
 
                         @{
                             int count = 1;
@@ -71,6 +75,9 @@
                                     <td style="max-width: 25px;">@count</td>
                                     <td style="max-width: 25px;">@Html.CheckBoxFor(c=>Model[i].CheckStatus)</td>
                                     <td hidden>@Html.TextBoxFor(m=> Model[i].SicilNo)</td>
+                                    <td hidden>@Html.TextBoxFor(m=> Model[i].DepId)</td>
+                                    <td hidden>@Html.TextBoxFor(m=> Model[i].ServiceId)</td>
+                                    <td hidden>@Html.TextBoxFor(m=> Model[i].StationId)</td>
                                     <td>@Model[i].Name @Model[i].Surname</td>
                                 </tr>
                                 count++;
@@ -83,6 +90,9 @@
                             <th style="max-width: 40px;">#</th>
                             <th style="max-width: 42px;"><i class="fa-solid fa-check"></i></th>
                             <th hidden>Sicil</th>
+                            <th hidden>.</th>
+                            <th hidden>.</th>
+                            <th hidden>.</th>
                             <th>Personel Ad Soyad</th>
                         </tr>
                     </tfoot>
@@ -91,13 +101,13 @@
             </form>
         </div>
     </div>
-
+    @* Vardiya Search *@
     <div class="card">
         <div class="card-header bg-success">
             <div class="card-text">@hafta .Hafta Personel Listesi</div>
         </div>
         <div class="card-body">
-            <div id="radio-buttons" class="btn-group btn-group-toggle col mb-2" data-toggle="buttons">
+            <div id="radio-buttons-vardiya" class="btn-group btn-group-toggle col mb-2" data-toggle="buttons">
                 <label class="btn btn-dark active col-2 float-left btn-sm">
                     <input type="radio" name="options" id="option0" value="0" autocomplete="off" disabled>
                     Vardiya

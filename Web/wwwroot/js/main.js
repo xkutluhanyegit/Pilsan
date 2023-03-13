@@ -63,14 +63,21 @@ $(document).ready(function () {
     }
   });
 
-
   $('#radio-buttons input').on('change', function () {
     var RadioBtnValue = $('input[name=options]:checked', '#radio-buttons').val();
+
+    $('#shiftidd').attr('value', RadioBtnValue);
+
+  });
+
+
+  $('#radio-buttons-vardiya input').on('change', function () {
 
     // $("#example1-shift tr").each(function (index) {
     //   $(this).find("td #ShiftId").attr('value', RadioBtnValue);
     // });
-    $('#shiftidd').attr('value', RadioBtnValue);
+    alert("Hello");
+    $('#shiftidd').attr('value', RadioBtnValueShift);
 
     var dataTable = $("#example1-shift1-result").DataTable();
     dataTable.clear().draw();

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.DataAccess;
 using Entities.Concrete;
-using Entities.DTOs;
 
 namespace DataAccess.Abstract
 {
-    public interface IPersonelShiftDal : IEntityRepository<PersonelShift>
+    public interface IPersonelShiftDal : IEntityRepository<Personelshift>
     {
+
     }
 }

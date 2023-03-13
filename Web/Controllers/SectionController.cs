@@ -22,6 +22,7 @@ namespace Web.Controllers
         IPersonelService _personelService;
         IPersonelShiftService _personelShiftService;
 
+
         public SectionController(ILogger<SectionController> logger, IPersonelService personelService, IPersonelShiftService personelShiftService)
         {
             _logger = logger;
@@ -82,25 +83,16 @@ namespace Web.Controllers
 
         [HttpPost("akulu-montaj-vardiya")]
         [Authorize(Roles = "akulu-montaj,admin")]
-        public IActionResult battery_installation_shift(List<PersonelDetailDto> personel, int shiftid)
+        public IActionResult battery_installation_shift(List<PersonelDetailDto> personel, int shiftidd)
         {
             for (int i = 0; i < personel.Count(); i++)
             {
                 if (personel[i].CheckStatus)
                 {
-                    var personelGet = _personelService.Get(personel[i].SicilNo).Data;
-                    personelGet.Shiftid = shiftid;
-
-                    var res = _personelService.Update(personelGet);
+                    _personelShiftService.Add(personel[i], shiftidd);
                 }
             }
 
-            var resData = _personelService.GetByNoShiftPersonelDetailDto(DepartmanCode.battery_installation);
-
-            if (resData.Success)
-            {
-                return RedirectToAction("battery_installation_shift", "section");
-            }
             return View();
         }
 

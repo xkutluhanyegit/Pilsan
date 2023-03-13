@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Entities.Concrete;
 
-namespace DataAccess.Concrete.EntityFramework
+namespace Entities.Concrete
 {
     public partial class PersonelCIContext : DbContext
     {
@@ -259,8 +258,8 @@ namespace DataAccess.Concrete.EntityFramework
         public virtual DbSet<Personel> Personels { get; set; } = null!;
         public virtual DbSet<Personel1> Personel1s { get; set; } = null!;
         public virtual DbSet<PersonelAmir> PersonelAmirs { get; set; } = null!;
-        public virtual DbSet<PersonelShift> PersonelShifts { get; set; } = null!;
         public virtual DbSet<Personelamir1> Personelamirs1 { get; set; } = null!;
+        public virtual DbSet<Personelshift> Personelshifts { get; set; } = null!;
         public virtual DbSet<Pertipi> Pertipis { get; set; } = null!;
         public virtual DbSet<Pertran> Pertrans { get; set; } = null!;
         public virtual DbSet<Pertransalt> Pertransalts { get; set; } = null!;
@@ -13108,35 +13107,6 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.YmkModulDurumu).HasColumnName("YMK_MODUL_DURUMU");
             });
 
-            modelBuilder.Entity<PersonelShift>(entity =>
-            {
-                entity.ToTable("PersonelShift");
-
-                entity.Property(e => e.Id).HasColumnName("id");
-
-                entity.Property(e => e.Author).HasMaxLength(50);
-
-                entity.Property(e => e.CreateDate).HasMaxLength(50);
-
-                entity.Property(e => e.DepId)
-                    .HasMaxLength(20)
-                    .HasColumnName("DepID");
-
-                entity.Property(e => e.ServiceId)
-                    .HasMaxLength(20)
-                    .HasColumnName("ServiceID");
-
-                entity.Property(e => e.ShiftId).HasColumnName("ShiftID");
-
-                entity.Property(e => e.SicilNo)
-                    .HasMaxLength(20)
-                    .HasColumnName("sicilNo");
-
-                entity.Property(e => e.StationId)
-                    .HasMaxLength(20)
-                    .HasColumnName("StationID");
-            });
-
             modelBuilder.Entity<Personelamir1>(entity =>
             {
                 entity.HasKey(e => new { e.Srkodu, e.Prsicil, e.AmirKodu, e.Derece });
@@ -13160,6 +13130,27 @@ namespace DataAccess.Concrete.EntityFramework
                 entity.Property(e => e.Idno)
                     .ValueGeneratedOnAdd()
                     .HasColumnName("IDNO");
+            });
+
+            modelBuilder.Entity<Personelshift>(entity =>
+            {
+                entity.ToTable("PERSONELSHIFT");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Author).HasMaxLength(16);
+
+                entity.Property(e => e.DeptCode).HasMaxLength(16);
+
+                entity.Property(e => e.ServiceCode).HasMaxLength(16);
+
+                entity.Property(e => e.ShiftEnd).HasMaxLength(32);
+
+                entity.Property(e => e.ShiftStart).HasMaxLength(32);
+
+                entity.Property(e => e.SicilNo).HasMaxLength(16);
+
+                entity.Property(e => e.StationCode).HasMaxLength(16);
             });
 
             modelBuilder.Entity<Pertipi>(entity =>
