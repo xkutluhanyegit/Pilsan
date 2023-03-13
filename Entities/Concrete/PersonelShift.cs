@@ -15,5 +15,6 @@ namespace Entities.Concrete
         public string? ShiftStart { get; set; }
         public string? ShiftEnd { get; set; }
         public string? Author { get; set; }
+        public int? WeekOfYear { get; set; }
     }
 }

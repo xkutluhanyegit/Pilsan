@@ -37,6 +37,10 @@ namespace DataAccess.Concrete.EntityFramework
                           on p.Sicilno equals k.Prsicil into tempssss
                           from kp in tempssss.DefaultIfEmpty()
 
+                          join ps in context.Personelshifts
+                          on p.Sicilno equals ps.SicilNo into tempsssss
+                          from psp in tempsssss.DefaultIfEmpty()
+
                           where p.Iscikt == null
 
                           select new PersonelDetailDto
@@ -52,8 +56,9 @@ namespace DataAccess.Concrete.EntityFramework
                               ServiceName = sp.Turu,
                               StationId = pd.DurakKodu,
                               StationName = pd.DurakAdi,
-                              WeekOfYear = p.Weekofyear,
-                              TCKN = kp.Tckmno
+                              TCKN = kp.Tckmno,
+                              WeekOfYear = psp.WeekOfYear
+
                           };
 
                 return res.ToList();

@@ -93,7 +93,7 @@ namespace Web.Controllers
                 }
             }
 
-            return View();
+            return RedirectToAction("battery_installation_shift", "section");
         }
 
         [HttpGet("getJsonbattery_installation_shift")]
