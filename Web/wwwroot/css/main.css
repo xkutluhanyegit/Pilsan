@@ -1,0 +1,29 @@
+.btn-app{
+    min-width: 120px;
+}
+.table tr{
+    cursor: pointer;
+}
+
+.modal-body{
+    height: 73vh; 
+    overflow-y: scroll;
+}
+
+#logout a {
+    position: fixed;
+    bottom: 10px;
+    background-color: #ec2127;
+    border-radius: 4px;
+    color: white;
+
+}
+
+#logout a:hover {
+    position: fixed;
+    bottom: 10px;
+    background-color: #ec2127;
+    border-radius: 4px;
+    color: white;
+
+}

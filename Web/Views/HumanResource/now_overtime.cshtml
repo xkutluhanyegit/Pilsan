@@ -1,0 +1,59 @@
+@using Core.Constant
+@model List<Entities.DTO.HRPersonelDetailDto>
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <strong>@WeekofDay.dayNow Personel Mesai Servis Planı</strong>
+    </div>
+    <div class="card-body">
+        <table id="" class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th style="width: 75%;">Servis</th>
+                    <th style="width: 25%;">#</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.GroupBy(p=>p.ServiceName))
+                {
+                    <tr class="clickable bg-dark" data-toggle="collapse" id="row1" data-target=".row1">
+
+                        <td> <i class="fa-solid fa-location-crosshairs mr-1 ml-1" style="color: #ffffff;"></i> @item.Key</td>
+                        <td>@item.Count()</td>
+                    </tr>
+
+                    foreach (var x in item.GroupBy(p=>p.StationName))
+                    {
+                        <tr data-toggle="collapse" id="row2" data-target=".row2" class="collapse row1 bg-light">
+                            <td> <i class="fa-solid fa-location-arrow mr-2 ml-2" style="color: #000000;"></i> @x.Key</td>
+                            <td>@x.Count()</td>
+                        </tr>
+
+                        foreach (var z in x)
+                        {
+                            <tr class="collapse row2 bg-white">
+                                <td> <i class="fa-solid fa-angles-right fa-fade mr-3 ml-3" style="color: #ff0000;"></i> @z.Name @z.Surname</td>
+                            </tr>
+                        }
+                    }
+
+                }
+                 
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th style="width: 75%;">Servis</th>
+                    <th style="width: 25%;">#</th>
+
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+</div>

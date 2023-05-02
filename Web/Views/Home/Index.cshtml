@@ -1,0 +1,51 @@
+﻿@{
+  ViewData["Title"] = "Dashboard";
+  Layout = "_Layout";
+}
+<div class="row">
+  <a asp-controller="humanresource" asp-action="index" class="col-md-3 col-sm-6 col-12">
+    <div>
+      <div class="info-box bg-gradient-dark">
+        <span class="info-box-icon"><i class="fa-solid fa-users fa-fade"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">İnsan Kaynakları</span>
+          <span class="info-box-number">@ViewBag.personelCount Personel</span>
+
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+          <span class="progress-description">
+            <small>Pilsan | Toy Professional</small>
+          </span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+  </a>
+
+  <a asp-controller="departments" asp-action="index" class="col-md-3 col-sm-6 col-12">
+    <div>
+      <div class="info-box bg-gradient-dark">
+        <span class="info-box-icon"><i class="fa-solid fa-puzzle-piece fa-fade"></i></span>
+
+        <div class="info-box-content">
+          <span class="info-box-text">Departmanlar</span>
+          <span class="info-box-number">@ViewBag.departmentsCount Bölüm</span>
+
+          <div class="progress">
+            <div class="progress-bar" style="width: 100%"></div>
+          </div>
+          <span class="progress-description">
+            <small>Pilsan | Toy Professional</small>
+          </span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+  </a>
+
+
+</div>

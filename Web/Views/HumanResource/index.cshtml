@@ -1,0 +1,244 @@
+@using Core.Constant
+@model Web.Models.HRDepartmentsDetailViewModel
+@{
+  ViewData["Title"] = "İnsan Kaynakları";
+  Layout = "_Layout";
+}
+@{
+  var day = DateTime.Now.ToShortDateString();
+  var weekNow = (DateTime.Now.DayOfYear - 2) / 7;
+  var weekNext = weekNow + 1;
+}
+
+<!--Service Exit-->
+<div class="card">
+  <div class="card-header">
+    <strong>@WeekofDay.dayNow - Servis Durak Listesi</strong>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      
+        <div class="col-12 col-sm-6 col-md-2">
+          <a asp-controller="humanresource" asp-action="now_overtime" asp-route-overtimeID="6" class="text-dark">
+            <div class="info-box callout callout-danger">
+              <span class="info-box-icon elevation-1"><i class="fa-solid fa-bus"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text text-center">@day</span>
+                <span class="info-box-text text-center"><i class="fa-solid fa-clock fa-fade mr-2"
+                    style="color: #000000;"></i>08:00</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+          </a>
+
+          <!-- /.info-box -->
+        </div>
+      
+
+
+      <div class="col-12 col-sm-6 col-md-2">
+        <a asp-controller="humanresource" asp-action="now_overtime" asp-route-overtimeID="1" class="text-dark">
+          <div class="info-box callout callout-danger">
+            <span class="info-box-icon elevation-1"><i class="fa-solid fa-bus"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text text-center">@day</span>
+              <span class="info-box-text text-center"><i class="fa-solid fa-clock fa-fade mr-2"
+                  style="color: #000000;"></i>16:00</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </a>
+
+        <!-- /.info-box -->
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-2">
+        <a asp-controller="humanresource" asp-action="now_overtime" asp-route-overtimeID="2" class="text-dark">
+          <div class="info-box callout callout-danger">
+            <span class="info-box-icon elevation-1"><i class="fa-solid fa-bus"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text text-center">@day</span>
+              <span class="info-box-text text-center"><i class="fa-solid fa-clock fa-fade mr-2"
+                  style="color: #000000;"></i>18:00</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </a>
+
+        <!-- /.info-box -->
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-2">
+        <a asp-controller="humanresource" asp-action="now_overtime" asp-route-overtimeID="3" class="text-dark">
+          <div class="info-box callout callout-danger">
+            <span class="info-box-icon elevation-1"><i class="fa-solid fa-bus"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text text-center">@day</span>
+              <span class="info-box-text text-center"><i class="fa-solid fa-clock fa-fade mr-2"
+                  style="color: #000000;"></i>20:00</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </a>
+
+        <!-- /.info-box -->
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-2">
+        <a asp-controller="humanresource" asp-action="now_overtime" asp-route-overtimeID="4" class="text-dark">
+          <div class="info-box callout callout-danger">
+            <span class="info-box-icon elevation-1"><i class="fa-solid fa-bus"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text text-center">@day</span>
+              <span class="info-box-text text-center"><i class="fa-solid fa-clock fa-fade mr-2"
+                  style="color: #000000;"></i>22:00</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </a>
+
+        <!-- /.info-box -->
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-2">
+        <a asp-controller="humanresource" asp-action="now_overtime" asp-route-overtimeID="5" class="text-dark">
+          <div class="info-box callout callout-danger">
+            <span class="info-box-icon elevation-1"><i class="fa-solid fa-bus"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text text-center">@day</span>
+              <span class="info-box-text text-center"><i class="fa-solid fa-clock fa-fade mr-2"
+                  style="color: #000000;"></i>24:00</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </a>
+
+        <!-- /.info-box -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--Next Week Plan-->
+<div class="card card-sm">
+  <div class="card-header">
+    <strong>@weekNext. Hafta Planlanan Vardiya Listesi</strong>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3 float-left">
+        <a asp-controller="HumanResource" asp-action="next_week_shift" asp-route-shiftId = "6">
+          <div class="btn btn-xs btn-outline-primary w-100">
+            <strong><i class="fa-solid fa-clock fa-fade mr-2"></i> 00:00 - 08:00</strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 float-left">
+        <a asp-controller="HumanResource" asp-action="next_week_shift" asp-route-shiftId = "1">
+          <div class="btn btn-xs btn-outline-primary w-100">
+            <strong><i class="fa-solid fa-clock fa-fade mr-2"></i> 08:00 - 16:00</strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 float-left">
+        <a asp-controller="HumanResource" asp-action="next_week_shift" asp-route-shiftId = "2">
+          <div class="btn btn-xs btn-outline-primary w-100">
+            <strong><i class="fa-solid fa-clock fa-fade mr-2"></i> 08:00 - 18:00</strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 float-left">
+        <a asp-controller="HumanResource" asp-action="next_week_shift" asp-route-shiftId = "5">
+          <div class="btn btn-xs btn-outline-primary w-100">
+            <strong><i class="fa-solid fa-clock fa-fade mr-2"></i> 16:00 - 24:00</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /.row -->
+
+<div class="card">
+  <div class="card-header">
+    <h3 style="font-weight: bold;" class="card-title float-left">@WeekofDay.weekNow. Hafta Personel Vardiya Listesi </h3>
+    <a asp-controller="humanresource" asp-action="now_overtime_total" class="btn btn-success float-right"><i class="fa-regular fa-file-lines"></i> Fazla Mesai Listesi</a>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table id="ik-table" class="table table-bordered table-striped table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>TC Kimlik</th>
+          <th>Sicil No</th>
+          <th>Personel Ad Soyad</th>
+          <th>Departman</th>
+          <th>Servis</th>
+          <th>Durak</th>
+          <th>Vardiya</th>
+          <th>Mesai</th>
+        </tr>
+      </thead>
+      <tbody>
+        @{
+          int count = 1;
+
+          @foreach (var item in Model.GetAllHRPersonelDetailDto)
+          {
+            <tr>
+              <td>@count</td>
+              <td>@item.TCKN</td>
+              <td>@item.RegisterNo</td>
+              <td>@item.Name @item.Surname</td>
+              <td>@item.DepartmanName</td>
+              <td>@item.ServiceName</td>
+              <td>@item.StationName</td>
+              @if (@item.ShiftName != null)
+              {
+                <td class="text-center"><strong>@item.ShiftName</strong></td>
+              }
+              else
+              {
+                <td class="text-center"><i class="fa-solid fa-minus fa-beat" style="color: #ff0000;"></i></td>
+              }
+              @if (@item.OvertimeName != null)
+              {
+                <td class="text-center"><strong>@item.OvertimeName</strong></td>
+              }
+              else
+              {
+                <td class="text-center"><i class="fa-solid fa-minus fa-beat" style="color: #ff0000;"></i></td>
+              }
+
+            </tr>
+            count++;
+          }
+
+        }
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>#</th>
+          <th>TC Kimlik</th>
+          <th>Sicil No</th>
+          <th>Personel Ad Soyad</th>
+          <th>Departman</th>
+          <th>Servis</th>
+          <th>Durak</th>
+          <th>Vardiya</th>
+          <th>Mesai</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>

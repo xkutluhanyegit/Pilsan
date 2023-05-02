@@ -1,0 +1,573 @@
+@using Core.Constant
+@model Web.Models.DepartmentsDetailViewModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="card card-sm">
+  <div class="card-header">
+    <strong>@WeekofDay.weekNext. Hafta Planlanan Vardiya Listesi</strong>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3 float-left">
+        <a asp-controller="departments" asp-action="next_week_shift" asp-route-department='@TempData["depID"]'  asp-route-shiftId = "6">
+          <div class="btn btn-xs btn-outline-dark w-100">
+            <strong><i class="fa-solid fa-clock fa-fade mr-2"></i> 00:00 - 08:00</strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 float-left">
+        <a asp-controller="departments" asp-action="next_week_shift" asp-route-department='@TempData["depID"]' asp-route-shiftId = "1">
+          <div class="btn btn-xs btn-outline-dark w-100">
+            <strong><i class="fa-solid fa-clock fa-fade mr-2"></i> 08:00 - 16:00</strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 float-left">
+        <a asp-controller="departments" asp-action="next_week_shift" asp-route-department='@TempData["depID"]' asp-route-shiftId = "2">
+          <div class="btn btn-xs btn-outline-dark w-100">
+            <strong><i class="fa-solid fa-clock fa-fade mr-2"></i> 08:00 - 18:00</strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-3 float-left">
+        <a asp-controller="departments" asp-action="next_week_shift" asp-route-department='@TempData["depID"]' asp-route-shiftId = "5">
+          <div class="btn btn-xs btn-outline-dark w-100">
+            <strong><i class="fa-solid fa-clock fa-fade mr-2"></i> 16:00 - 24:00</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <strong>@WeekofDay.weekNow. Hafta - Personel Vardiya Listesi</strong>
+
+        <!--Today Overtime Plan-->
+        <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#todayOvertimePlan">
+            <span class="badge badge-pill badge-light mr-2"><i class="fa-regular fa-calendar-days fa-fade mr-1"></i>
+                @WeekofDay.dayNow</span>Mesai Planla
+        </button>
+        <!--Today Overtime Show-->
+        <button type="button" style="" class="btn btn-danger float-right mr-2 text-center" data-toggle="modal" data-target="#todayOvertimeShow">
+            <i class="fa-regular fa-eye fa-fade"></i>
+        </button>
+        <!--Next Week Shift Plan-->
+        <button type="button" class="btn btn-primary float-right mr-2" data-toggle="modal" data-target="#modal-xl">
+            <span class="badge badge-pill badge-light mr-2"><i class="fa-regular fa-calendar-days fa-fade mr-1"></i>
+                @WeekofDay.weekNext. Hafta</span>Vardiya Planla
+        </button>
+        <!--Next Week Shift Show-->
+        <button type="button" style="" class="btn btn-primary float-right mr-2 text-center" data-toggle="modal" data-target="#nextWeekShow">
+            <i class="fa-regular fa-eye fa-fade"></i>
+        </button>
+
+    </div>
+    <div class="card-body">
+        <table id="department-table" class="table table-bordered table-hover table-sm">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Personel Ad Soyad</th>
+                    <th>Departman</th>
+                    <th>Servis</th>
+                    <th>Durak</th>
+                    <th>Vardiya</th>
+                    <th>Mesai</th>
+                    <th hidden></th>
+                    <th hidden></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 1;
+                    @foreach (var item in Model.GetAllWeekNowDepartmentPersonelDetailDto)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Name @item.Surname</td>
+                            <td>@item.DepartmanName</td>
+                            <td>@item.ServiceName</td>
+                            <td>@item.StationName</td>
+                            @if (@item.ShiftName != null)
+                            {
+                                <td class="text-center">
+                                    <div class="col text-center">
+                                        <strong class="text-center">@item.ShiftName</strong>
+
+                                        <select hidden class="form-control-sm text-center">
+                                            <option value="0" disabled selected><strong>-Vardiya Seçin</strong></option>
+                                            <option value="1" ><strong>08:00 - 16:00</strong></option>
+                                            <option value="2" ><strong>08:00 - 18:00</strong></option>
+                                            <option value="5" ><strong>16:00 - 24:00</strong></option>
+                                            <option value="6" ><strong>00:00 - 08:00</strong></option>
+                                        </select>
+                                        <button type="button" style="width: 28px; height:28px;" class="btn btn-warning btn-xs btn-update"><i class="fa-solid fa-rotate-left fa-fade fa-xs"></i></button>
+                                        <button hidden type="button" style="width: 28px; height:28px;" class="btn btn-success btn-xs btn-save"><i class="fa-solid fa-check fa-fade fa-xs"></i></button>
+                                        
+                                    </div>
+                                    
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-center"><i class="fa-solid fa-minus fa-beat fa-xs" style="color: #ff0000;"></i></td>
+                            }
+                            @if (@item.OvertimeName != null)
+                            {
+                                <td class="text-center"><strong>@item.OvertimeName</strong></td>
+                            }
+                            else
+                            {
+                                <td class="text-center"><i class="fa-solid fa-minus fa-beat" style="color: #ff0000;"></i></td>
+                            }
+                            <td hidden class="req">@item.RegisterNo</td>
+                            <td hidden class="week">@item.WeekofYear</td>
+                        </tr>
+                        count++;
+                    }
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <th>Personel Ad Soyad</th>
+                    <th>Departman</th>
+                    <th>Servis</th>
+                    <th>Durak</th>
+                    <th>Vardiya</th>
+                    <th>Mesai</th>
+                    <th hidden></th>
+                    <th hidden></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<!--next week shift plan modal-->
+<div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>@WeekofDay.weekNext. Hafta Vardiya Atanmamış Personel Listesi</strong>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form asp-controller="departments" asp-action="department_shift_add" method="post">
+                <!--Shift ID Select-->
+                <input hidden type="text" name="shiftID" id="shiftID" value="1"></input>
+                <div class="modal-body ">
+                    <table id="department-shift-table" class="table table-bordered table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th hidden></th>
+                                <th>Personel Ad Soyad</th>
+                                <th>Departman</th>
+                                <th>Servis</th>
+                                <th>Durak</th>
+                                <th class="text-center"><span class="badge badge-dark">@WeekofDay.weekNow. Hafta</span>
+                                </th>
+                                <th class="text-center"><span class="badge badge-success">@WeekofDay.weekNext.
+                                        Hafta</span>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @{
+
+                                @for (int i = 0; i < Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto.Count(); i++)
+                                {
+                                    
+                                    <tr>
+                                        <td class="text-center">@Html.CheckBoxFor(m=>Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].Check)</td>
+                                        <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].RegisterNo)</td>
+                                        <td>@Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].Name @Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].Surname</td>
+                                        <td>@Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].DepartmanName</td>
+                                        <td>@Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].ServiceName</td>
+                                        <td>@Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].StationName</td>
+                                        @if (Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].ShiftName != null)
+                                        {
+                                            <td class="text-center"><small>@Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].ShiftName</small></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center"><i class="fa-solid fa-minus fa-beat"
+                                            style="color: #ff0000;"></i>
+                                            </td>
+                                        }
+
+                                        <td class="text-center">
+                                            @{
+                                                if (Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].ShiftID == 1)
+                                                {
+                                                    Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID = 5;
+                                                    foreach (var item in Model.GetAllShiftList)
+                                                    {
+                                                        if (item.Shiftid == Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)
+                                                        {
+                                                            
+                                                            <p hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)</p>
+                                                            <strong class="text-center">@item.Shiftname</strong>
+
+
+                                                        }
+                                                    }
+                                                }
+                                                else if (Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].ShiftID == 5)
+                                                {
+                                                    
+                                                    Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID = 6;
+                                                    foreach (var item in Model.GetAllShiftList)
+                                                    {
+                                                        if (item.Shiftid == Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)
+                                                        {
+                                                            <strong class="text-center">@item.Shiftname</strong>
+                                                            <p hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)</p>
+
+
+
+                                                        }
+                                                    }
+
+                                                }
+                                                else if (Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].ShiftID == 6)
+                                                {
+                                                    Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID = 1;
+                                                    foreach (var item in Model.GetAllShiftList)
+                                                    {
+                                                        if (item.Shiftid == Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)
+                                                        {
+                                                            <strong class="text-center">@item.Shiftname</strong>
+                                                            <p hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)</p>
+
+                                                        }
+                                                    }
+                                                }
+                                                else if (Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].ShiftID == 2)
+                                                {
+                                                    Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID = 2;
+                                                    foreach (var item in Model.GetAllShiftList)
+                                                    {
+                                                        if (item.Shiftid == Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)
+                                                        {
+                                                            <strong class="text-center">@item.Shiftname</strong>
+                                                            <p hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)</p>
+
+                                                        }
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    <div class="col text-center">
+                                                        <strong class="text-center text-success"></strong>
+                                                        <p hidden class="shiftID" >@Html.TextBoxFor(m=>Model.GetAllWeekNextNoShiftDepartmentPersonelDetailDto[i].NextWeekShiftID)</p>
+                                                        <a class="plus-btn btn btn-sm btn-success"><i class="fa-solid fa-plus fa-fade" style="color: #ffffff;"></i></a>
+                                                    </div>
+                                                        
+                                                    
+                                                    
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                        
+                                    
+                                    
+                                }
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th hidden></th>
+                                <th>Personel Ad Soyad</th>
+                                <th>Departman</th>
+                                <th>Servis</th>
+                                <th>Durak</th>
+                                <th class="text-center"><span class="badge badge-dark">@WeekofDay.weekNow. Hafta</span>
+                                </th>
+
+                                <th class="text-center"><span class="badge badge-success">@WeekofDay.weekNext.
+                                        Hafta</span>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success float-right">
+                        <span class="badge badge-pill badge-light mr-2"><i
+                                class="fa-regular fa-calendar-days fa-fade mr-1"></i>
+                            @WeekofDay.weekNext. Hafta</span>Vardiya Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!--Next week shift Show-->
+<div class="modal fade" id="nextWeekShow" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>@WeekofDay.weekNext. Hafta Vardiya Atanmış Personel Listesi</strong>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form asp-controller="departments" asp-action="department_shift_delete" method="post">
+                <!--Shift ID Select-->
+                <input hidden type="text" name="shiftID" id="shiftID" value="1"></input>
+                <div class="modal-body ">
+                    <table id="department-shift-show-table" class="table table-bordered table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th hidden></th>
+                                <th>Personel Ad Soyad</th>
+                                <th>Departman</th>
+                                <th>Servis</th>
+                                <th>Durak</th>
+                                <th class="text-center"><span class="badge badge-success">@WeekofDay.weekNext.
+                                        Hafta</span>
+                                </th>
+                                <th hidden></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (int i = 0; i < Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto.Count(); i++)
+                            {
+                                <tr>
+                                    <td class="text-center">@Html.CheckBoxFor(m=>Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].Check)</td>
+                                    <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].RegisterNo)</td>
+                                    <td>@Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].Name @Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].Surname</td>
+                                    <td>@Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].DepartmanName</td>
+                                    <td>@Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].ServiceName</td>
+                                    <td>@Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].StationName</td>
+                                    <td class="text-center"><strong>@Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].ShiftName</strong></td>
+                                    <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].WeekofYear)</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th hidden></th>
+                                <th>Personel Ad Soyad</th>
+                                <th>Departman</th>
+                                <th>Servis</th>
+                                <th>Durak</th>
+
+                                <th class="text-center"><span class="badge badge-success">@WeekofDay.weekNext.
+                                        Hafta</span>
+                                </th>
+                                <th hidden></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger float-right">
+                        <span class="badge badge-pill badge-light mr-2"><i
+                                class="fa-regular fa-calendar-days fa-fade mr-1"></i>
+                            @WeekofDay.weekNext. Hafta</span>Vardiya Sil
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!--Today Overtime Plan-->
+<div class="modal fade" id="todayOvertimePlan" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <form asp-controller="departments" asp-action="department_overtime_add" method="post">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-9 float-left">
+                    <h4 class="modal-title"><strong>@WeekofDay.dayNow Personel Mesai Listesi</strong></h4>
+                </div>
+                <div class="col-3 float-left">
+                    <div class="input-group">
+                        <input name="OvertimeDay" id="OvertimeDay" type="text" class="form-control form-control-sm datepicker">
+                        <div class="input-group-append">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            
+                <!--Shift ID Select-->
+                <input hidden type="text" name="overtimeID" id="overtimeID" value="2"></input>
+                <div class="modal-body ">
+                    <table id="department-overtime-table" class="table table-bordered table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th hidden></th>
+                                <th>Personel Ad Soyad</th>
+                                <th>Departman</th>
+                                <th>Servis</th>
+                                <th>Durak</th>
+                                <th class="text-center">
+                                    Vardiya
+                                </th>
+                                <th hidden></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (int i = 0; i < Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto.Count(); i++)
+                            {
+                                <tr>
+                                    <td class="text-center">@Html.CheckBoxFor(m=>Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].Check)</td>
+                                    <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].RegisterNo)</td>
+                                    <td>@Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].Name @Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].Surname</td>
+                                    <td>@Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].DepartmanName</td>
+                                    <td>@Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].ServiceName</td>
+                                    <td>@Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].StationName</td>
+                                    <td class="text-center"><strong>@Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].ShiftName</strong></td>
+                                    <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[i].WeekofYear)</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th hidden></th>
+                                <th>Personel Ad Soyad</th>
+                                <th>Departman</th>
+                                <th>Servis</th>
+                                <th>Durak</th>
+
+                                <th class="text-center">
+                                    Vardiya
+                                </th>
+                                <th hidden></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success float-right">
+                        <span class="badge badge-pill badge-light mr-2"><i
+                                class="fa-regular fa-calendar-days fa-fade mr-1"></i>
+                            @WeekofDay.dayNow</span>Mesai Kaydet
+                    </button>
+                </div>
+            
+        </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!--Today Overtime Show-->
+<div class="modal fade" id="todayOvertimeShow" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>@WeekofDay.dayNow Personel Mesai Listesi</strong>
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form asp-controller="departments" asp-action="department_overtime_delete" method="post">
+                <!--Shift ID Select-->
+                <input hidden type="text" name="shiftID" id="shiftID" value="1"></input>
+                <div class="modal-body ">
+                    <table id="department-overtime-show-table" class="table table-bordered table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th hidden></th>
+                                <th>Personel Ad Soyad</th>
+                                <th>Departman</th>
+                                <th>Servis</th>
+                                <th>Durak</th>
+                                <th class="text-center">Vardiya</th>
+                                <th class="text-center"><span class="badge badge-success mr-2"><i
+                                class="fa-regular fa-calendar-days fa-fade mr-1"></i>
+                            @WeekofDay.dayNow</span></th>
+                                <th hidden></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (int i = 0; i < Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto.Count(); i++)
+                            {
+                                <tr>
+                                    <td class="text-center">@Html.CheckBoxFor(m=>Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].Check)</td>
+                                    <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].RegisterNo)</td>
+                                    <td>@Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].Name @Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].Surname</td>
+                                    <td>@Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].DepartmanName</td>
+                                    <td>@Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].ServiceName</td>
+                                    <td>@Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].StationName</td>
+                                    <td class="text-center"><strong>@Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].ShiftName</strong></td>
+                                    <td class="text-center"><strong>@Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].OvertimeName</strong></td>
+                                    <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].WeekofYear)</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th hidden></th>
+                                <th>Personel Ad Soyad</th>
+                                <th>Departman</th>
+                                <th>Servis</th>
+                                <th>Durak</th>
+
+                                <th class="text-center">Vardiya</span>
+                                </th>
+                                <th class="text-center"><span class="badge badge-pill badge-success mr-2"><i
+                                class="fa-regular fa-calendar-days fa-fade mr-1"></i>
+                            @WeekofDay.dayNow</span></th>
+                                <th hidden></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger float-right">
+                        <span class="badge badge-pill badge-light mr-2"><i
+                                class="fa-regular fa-calendar-days fa-fade mr-1"></i>
+                            @WeekofDay.dayNow</span>Mesai Sil
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

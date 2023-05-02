@@ -1,0 +1,81 @@
+@using Core.Constant
+@model List<Entities.DTO.HRPersonelDetailDto>
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+  <div class="card-header">
+    <h3 style="font-weight: bold;" class="card-title float-left">@WeekofDay.dayNow. Personel Mesai Listesi </h3>
+    
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table id="ik-table" class="table table-bordered table-striped table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>TC Kimlik</th>
+          <th>Sicil No</th>
+          <th>Personel Ad Soyad</th>
+          <th>Departman</th>
+          <th>Servis</th>
+          <th>Durak</th>
+          <th>Vardiya</th>
+          <th>Mesai</th>
+        </tr>
+      </thead>
+      <tbody>
+        @{
+          int count = 1;
+
+          @foreach (var item in Model)
+          {
+            <tr>
+              <td>@count</td>
+              <td>@item.TCKN</td>
+              <td>@item.RegisterNo</td>
+              <td>@item.Name @item.Surname</td>
+              <td>@item.DepartmanName</td>
+              <td>@item.ServiceName</td>
+              <td>@item.StationName</td>
+              @if (@item.ShiftName != null)
+              {
+                <td class="text-center"><strong>@item.ShiftName</strong></td>
+              }
+              else
+              {
+                <td class="text-center"><i class="fa-solid fa-minus fa-beat" style="color: #ff0000;"></i></td>
+              }
+              @if (@item.OvertimeName != null)
+              {
+                <td class="text-center"><strong>@item.OvertimeName</strong></td>
+              }
+              else
+              {
+                <td class="text-center"><i class="fa-solid fa-minus fa-beat" style="color: #ff0000;"></i></td>
+              }
+
+            </tr>
+            count++;
+          }
+
+        }
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>#</th>
+          <th>TC Kimlik</th>
+          <th>Sicil No</th>
+          <th>Personel Ad Soyad</th>
+          <th>Departman</th>
+          <th>Servis</th>
+          <th>Durak</th>
+          <th>Vardiya</th>
+          <th>Mesai</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>

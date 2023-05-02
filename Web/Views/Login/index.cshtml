@@ -1,0 +1,48 @@
+@{
+    Layout = "_Null";
+}
+
+@model Web.Models.LoginVM
+<div class="login-box">
+    <div class="login-logo">
+        <a asp-controller="login" asp-action="index"><img class="img-fluid" style="max-width: 200px;"
+                src="/dist/img/logo.png"></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Oturum açmak için giriş yapın!..</p>
+
+
+            <form asp-controller="login" asp-action="index" method="Post">
+                <div class="input-group mb-3">
+                    <input asp-for="@Model.email" type="text" class="form-control" placeholder="Kullanıcı adı">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="@Model.password" type="password" class="form-control" placeholder="Şifre">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block float-right">Giriş</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>

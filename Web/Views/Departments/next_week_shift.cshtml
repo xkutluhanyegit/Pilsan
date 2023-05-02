@@ -1,0 +1,54 @@
+@using Core.Constant
+@model List<Entities.DTO.DepartmentPersonelDetailDto>
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+  <div class="card-header">
+    <h3 style="font-weight: bold;" class="card-title float-left">@WeekofDay.weekNext. Hafta Personel Vardiya Listesi </h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table id="ik-table" class="table table-bordered table-striped table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Personel Ad Soyad</th>
+          <th>Departman</th>
+          <th>Servis</th>
+          <th>Vardiya</th>
+        </tr>
+      </thead>
+      <tbody>
+        @{
+          int count = 1;
+
+          @foreach (var item in Model)
+          {
+            <tr>
+              <td>@count</td>
+              <td>@item.Name @item.Surname</td>
+              <td>@item.DepartmanName</td>
+              <td>@item.ServiceName</td>
+            <td class="text-center"><strong>@item.ShiftName</strong></td>
+
+            </tr>
+            count++;
+          }
+
+        }
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>#</th>
+          <th>Personel Ad Soyad</th>
+          <th>Departman</th>
+          <th>Servis</th>
+          <th>Vardiya</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <!-- /.card-body -->
+</div>
