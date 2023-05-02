@@ -213,12 +213,13 @@
         format: "dd.mm.yyyy",
         language: "tr",
         startDate: '-0d',
-        changeMonth: true
+        changeMonth: true,
+        autoclose: true,
+        todayHighlight: true
     });
 
     $(function () {
         $(".datepicker").change(function () {
-            alert($(this).val());
             var dateButton = $(this).val();
             var dateText = $(this).val() + " Personel Mesai Listesi ";
             $("#todayOvertimePlan .modal-header strong").text(dateText);
