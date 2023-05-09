@@ -3,6 +3,7 @@
 @{
     Layout = "_Layout";
 }
+<input id="deptid" name="deptid" hidden type="text" value="@Model.GetAllWeekNowDepartmentPersonelDetailDto[0].DepartmanID">
 
 <div class="card card-sm">
   <div class="card-header">
@@ -347,6 +348,7 @@
                                         Hafta</span>
                                 </th>
                                 <th hidden></th>
+                                <th>İmza</th>
 
                             </tr>
                         </thead>
@@ -363,6 +365,7 @@
                                     <td>@Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].StationName</td>
                                     <td class="text-center"><strong>@Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].ShiftName</strong></td>
                                     <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNextYesShiftDepartmentPersonelDetailDto[i].WeekofYear)</td>
+                                    <td></td>
                                 </tr>
                             }
 
@@ -380,6 +383,7 @@
                                         Hafta</span>
                                 </th>
                                 <th hidden></th>
+                                <th>İmza</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -401,7 +405,7 @@
 <!--Today Overtime Plan-->
 <div class="modal fade" id="todayOvertimePlan" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-        <form asp-controller="departments" asp-action="department_overtime_add" method="post">
+        <form id="overtime-add-form" asp-controller="departments" asp-action="department_overtime_add" method="post">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-9 float-left">
@@ -409,7 +413,7 @@
                 </div>
                 <div class="col-3 float-left">
                     <div class="input-group">
-                        <input name="OvertimeDay" id="OvertimeDay" type="text" class="form-control form-control-sm datepicker" value="@WeekofDay.dayNow">
+                        <input name="OvertimeDay" id="OvertimeDay" type="text" class="form-control form-control-sm datepicker text-center" value="@WeekofDay.dayNow">
                         <div class="input-group-append">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -428,7 +432,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th hidden></th>
+                                <th class="xx" hidden></th>
                                 <th>Personel Ad Soyad</th>
                                 <th>Departman</th>
                                 <th>Servis</th>
@@ -475,7 +479,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success float-right">
+                    <button id="overtime-add" type="submit" class="btn btn-success float-right">
                         <span class="badge badge-pill badge-light mr-2"><i
                                 class="fa-regular fa-calendar-days fa-fade mr-1"></i>
                             @WeekofDay.dayNow</span>Mesai Kaydet
@@ -518,6 +522,7 @@
                                 class="fa-regular fa-calendar-days fa-fade mr-1"></i>
                             @WeekofDay.dayNow</span></th>
                                 <th hidden></th>
+                                <th>İmza</th>
 
                             </tr>
                         </thead>
@@ -535,6 +540,7 @@
                                     <td class="text-center"><strong>@Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].ShiftName</strong></td>
                                     <td class="text-center"><strong>@Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].OvertimeName</strong></td>
                                     <td hidden>@Html.TextBoxFor(m=>Model.GetAllWeekNowYesOvertimeDepartmentPersonelDetailDto[i].WeekofYear)</td>
+                                    <th></th>
                                 </tr>
                             }
 
@@ -554,6 +560,7 @@
                                 class="fa-regular fa-calendar-days fa-fade mr-1"></i>
                             @WeekofDay.dayNow</span></th>
                                 <th hidden></th>
+                                <th>İmza</th>
                             </tr>
                         </tfoot>
                     </table>

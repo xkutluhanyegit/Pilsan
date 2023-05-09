@@ -16,7 +16,7 @@ namespace DataAccess.Concrete.Entityframework
         {
             using (var context = new PersonelCIContext())
             {
-                var personelList = context.Personel1s.Where(p => p.Iscikt == null & p.Depart == departmentID);
+                var personelList = context.Personel1s.Where(p => p.Iscikt == null & p.Depart == departmentID & p.Masraf == "501" || p.Masraf == "1002");
                 var shiftList = context.Personelshifts.Where(p => p.WeekOfYear == week);
                 var overtimeList = context.Personelovertimes.Where(p => p.Overtimeday == overtimeDay);
 
@@ -81,7 +81,7 @@ namespace DataAccess.Concrete.Entityframework
         {
             using (var context = new PersonelCIContext())
             {
-                var personelList = context.Personel1s.Where(p => p.Iscikt == null);
+                var personelList = context.Personel1s.Where(p => p.Iscikt == null & p.Masraf == "501" || p.Masraf == "1002" );
                 var shiftList = context.Personelshifts.Where(p => p.WeekOfYear == week);
                 var overtimeList = context.Personelovertimes.Where(p => p.Overtimeday == overtimeDay);
 

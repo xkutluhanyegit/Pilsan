@@ -16,10 +16,11 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Route("departmanlar")]
-    [Authorize(Roles ="Admin,akulu,planlama")]
+    // [Authorize(Roles ="Admin,akulu,planlama")]
     
     public class DepartmentsController : Controller
     {
+        string deptID;
         private readonly ILogger<DepartmentsController> _logger;
         private readonly IPersonelService _personelService;
         private readonly IShiftService _shiftService;
@@ -68,13 +69,14 @@ namespace Web.Controllers
         [HttpGet("departman")]
         public IActionResult department(string id, string departmentname)
         {
+          TempData["x"] = id;
             DepartmentsDetailViewModel d = new DepartmentsDetailViewModel();
 
             var result = _personelService.GetAllDepartmentPersonelDetailDto(WeekofDay.weekNow, id,WeekofDay.dayNow);
 
             if (result.Success)
             {
-                TempData["depID"]=id;
+                
                 //NowWeek List
                 d.GetAllWeekNowDepartmentPersonelDetailDto = _personelService.GetAllDepartmentPersonelDetailDto(WeekofDay.weekNow, id,WeekofDay.dayNow).Data.ToList();
 
@@ -144,6 +146,7 @@ namespace Web.Controllers
         public IActionResult department_overtime_add(DepartmentsDetailViewModel personelList, int OvertimeID,string OvertimeDay)
         {
           var result = personelList.GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto;
+          
 
           foreach (var item in result)
           {
@@ -153,7 +156,7 @@ namespace Web.Controllers
                 p.Sicilno = item.RegisterNo;
                 p.Overtimeid = OvertimeID;
                 p.WeekOfYear = item.WeekofYear;
-                p.Overtimeday = OvertimeDay;
+                p.Overtimeday = Convert.ToDateTime(OvertimeDay).ToShortDateString();
                 _personelOvertimeService.Add(p);
 
             }
@@ -208,11 +211,20 @@ namespace Web.Controllers
           return View();
         }
 
-        [HttpPost("fazla-mesai-gune-gore")]
-        public JsonResult methodName(string date)
+        [HttpGet("fazla-mesai-gune-gore")]
+        public JsonResult methodName2(string date,string deptid)
         {
-          
-          return Json(null);
+          var result = _personelService.GetAllDepartmentPersonelDetailDto(WeekofDay.weekNow,deptid,date).Data.Where(p=>p.OvertimeID == null & (p.ShiftID == 1 | p.ShiftID == 2)).ToList();
+          var x = result;
+          return Json(result);
+        }
+
+        [HttpPost("fazla-mesai-gune-gore")]
+        public JsonResult methodName(string date,string deptid)
+        {
+          var result = _personelService.GetAllDepartmentPersonelDetailDto(WeekofDay.weekNow,deptid,date).Data.Where(p=>p.OvertimeID == null & (p.ShiftID == 1 | p.ShiftID == 2)).ToList();
+          var x = result;
+          return Json(result);
         }
 
 

@@ -157,13 +157,23 @@
             }],
             order: [[1, 'asc']]
         });
+
+        // $('#department-overtime-table tr').click(function (event) {
+        //     if (event.target.type !== 'checkbox') {
+        //         $(':checkbox', this).trigger('click');
+        //     }
+        // });
     });
 
-    $('#department-overtime-table tr').click(function (event) {
-        if (event.target.type !== 'checkbox') {
-            $(':checkbox', this).trigger('click');
-        }
-    });
+    //overtime
+    
+    
+
+    
+
+
+
+
 
     $(function () {
         $('#department-overtime-table_wrapper .col-md-6:eq(0)').append("<div id='radio-buttons-overtime' class='btn-group-sm btn-group-toggle col' data-toggle='buttons'><label class='btn btn-outline-dark active col-3 float-left btn-sm'><input type='radio' name='options' id='option1' value='2' autocomplete='off' checked><i class='fa-solid fa-clock fa-xs mr-2'></i> 18:00 </label><label class='btn btn-outline-dark  col-3 float-left btn-sm'><input type='radio' name='options' id='option2' value='3' autocomplete='off'><i class='fa-solid fa-clock fa-xs mr-2'></i> 20:00 </label><label class='btn btn-outline-dark  col-3 float-left btn-sm'><input type='radio' name='options' id='option3' value='4' autocomplete='off'><i class='fa-solid fa-clock fa-xs mr-2'></i> 22:00 </label><label class='btn btn-outline-dark  col-3 float-left btn-sm'><input type='radio' name='options' id='option4' value='5' autocomplete='off'><i class='fa-solid fa-clock fa-xs mr-2'></i> 24:00 </label></div>");
@@ -198,7 +208,7 @@
                 "targets": 0,
                 "orderable": false
             }],
-            order: [[1, 'asc']]
+            order: [[0, 'asc']]
 
         }).buttons().container().appendTo('#department-overtime-show-table_wrapper .col-md-6:eq(0)');
     });
@@ -210,7 +220,7 @@
     });
 
     $('.datepicker').datepicker({
-        format: "dd.mm.yyyy",
+        format: "d.mm.yyyy",
         language: "tr",
         startDate: '-0d',
         changeMonth: true,
@@ -220,24 +230,93 @@
 
     $(function () {
         $(".datepicker").change(function () {
+            var deptID = $("#deptid").val();
             var dateButton = $(this).val();
             var dateText = $(this).val() + " Personel Mesai Listesi ";
+
             $("#todayOvertimePlan .modal-header strong").text(dateText);
             $("#todayOvertimePlan .modal-footer span").text(dateButton);
 
-            $.ajax({
-                url: 'https://localhost:7136/departmanlar/fazla-mesai-gune-gore',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    date: dateButton
+            var url = 'https://localhost:7136/departmanlar/fazla-mesai-gune-gore?date=' + dateButton + '&deptid=' + deptID + '';
+            $('#department-overtime-table').DataTable({
+                "bDestroy": true,
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "paging": false,
+                "columnDefs": [{
+                    "targets": 0,
+                    "orderable": false
+                }],
+                order: [[1, 'asc']],
+                ajax: {
+                    url: url,
+                    dataSrc: ''
                 },
-                success: function (data) {
+                columns: [
+                    { data: "check" },
+                    { data: "registerNo" },
+                    { data: "name" },
+                    { data: "departmanName" },
+                    { data: "serviceName" },
+                    { data: "stationName" },
+                    { data: "shiftName" },
+                    { data: "weekofYear" }
+                ],
+                "columnDefs": [
+                    {
+                        "targets": 1,
+                        "visible":false,
+                        "render": function(data) {
+                            return '<td> <div name="GetAllWeekNowNoOvertimeDepartmentPersonelDetailDto[0].RegisterNo" class = "text-center "><input class="text-center" value="' + data + '" type="text"></div>  </td>';
+                        }
+                    },
+                    {
+                        "targets": 7,
+                        "visible": false
+                    },
+                    {
+                        "targets": 0,
+                        "display": "phone_display",
+                        "render": function (data) {
+                            return '<td> <div class = "text-center "><input class="text-center" value="' + data + '" type="checkbox"></div>  </td>';
+                        }
+                    }
 
-                }
+                ],
+                
+
+
             });
 
+
+
+
+
+            $('#department-overtime-table_length').remove();
+            $('#department-overtime-table_wrapper .col-md-6:eq(0)').append("<div id='radio-buttons-overtime' class='btn-group-sm btn-group-toggle col' data-toggle='buttons'><label class='btn btn-outline-dark active col-3 float-left btn-sm'><input type='radio' name='options' id='option1' value='2' autocomplete='off' checked><i class='fa-solid fa-clock fa-xs mr-2'></i> 18:00 </label><label class='btn btn-outline-dark  col-3 float-left btn-sm'><input type='radio' name='options' id='option2' value='3' autocomplete='off'><i class='fa-solid fa-clock fa-xs mr-2'></i> 20:00 </label><label class='btn btn-outline-dark  col-3 float-left btn-sm'><input type='radio' name='options' id='option3' value='4' autocomplete='off'><i class='fa-solid fa-clock fa-xs mr-2'></i> 22:00 </label><label class='btn btn-outline-dark  col-3 float-left btn-sm'><input type='radio' name='options' id='option4' value='5' autocomplete='off'><i class='fa-solid fa-clock fa-xs mr-2'></i> 24:00 </label></div>");
+
+            $('#radio-buttons-overtime input').on('change', function () {
+                var RadioBtnOvertimeValue = $('input[name=options]:checked', '#radio-buttons-overtime').val();
+
+                $('#overtimeID').attr('value', RadioBtnOvertimeValue);
+
+                if ($('#radio-buttons-overtime input').is(':checked')) {
+                    //Add beat
+                }
+            });
         });
     });
+
+    
+
+    $('#department-overtime-table tbody').on('click', 'tr', function (event) {
+        
+        if (event.target.type !== 'checkbox') {
+                     $(':checkbox', this).trigger('click');
+                     
+            }
+    });
+
+
+
 
 });
